@@ -26,11 +26,11 @@ sns.set_style("whitegrid")
 def load_model_and_data(model_path, device):
     """Load the trained model and prepare for evaluation"""
     try:
-        # Import the model class
-        from sc_convnext_model_optimized import OptimizedSCConvNeXt
+        # Import the existing model class
+        from sc_convnext_model import SCConvNeXt
         
         # Create model instance
-        model = OptimizedSCConvNeXt(num_classes=12)
+        model = SCConvNeXt(num_classes=12)
         model.load_state_dict(torch.load(model_path, map_location=device))
         model.to(device)
         model.eval()
@@ -192,7 +192,7 @@ def main():
     print("=" * 60)
     
     # Check if we have a trained model
-    model_path = '../saved_models_and_data/best_optimized_sc_convnext_model.pth'
+    model_path = '../saved_models_and_data/best_sc_convnext_model.pth'
     
     if os.path.exists(model_path):
         print(f"✅ Found trained model: {model_path}")
@@ -219,7 +219,7 @@ def main():
     
     # Instructions for real data
     print("\n📚 To use with real data:")
-    print("1. Train your model first: python train_sc_convnext_fixed.py")
+            print("1. Train your model first: python train_sc_convnext_simple.py")
     print("2. The training script will automatically generate the confusion matrix")
     print("3. Or run this script after training to regenerate it")
     
