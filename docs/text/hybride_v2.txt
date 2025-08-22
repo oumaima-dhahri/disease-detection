@@ -1,0 +1,208 @@
+Starting training...
+Epoch 1, Batch 0/164, Loss: 2.2853
+Epoch 1, Batch 10/164, Loss: 2.0600
+Epoch 1, Batch 20/164, Loss: 2.2587
+Epoch 1, Batch 30/164, Loss: 1.7921
+Epoch 1, Batch 40/164, Loss: 1.3993
+Epoch 1, Batch 50/164, Loss: 0.8533
+Epoch 1, Batch 60/164, Loss: 1.5440
+Epoch 1, Batch 70/164, Loss: 0.5472
+Epoch 1, Batch 80/164, Loss: 0.4496
+Epoch 1, Batch 90/164, Loss: 0.6474
+Epoch 1, Batch 100/164, Loss: 1.1466
+Epoch 1, Batch 110/164, Loss: 0.8154
+Epoch 1, Batch 120/164, Loss: 0.9395
+Epoch 1, Batch 130/164, Loss: 1.3714
+Epoch 1, Batch 140/164, Loss: 1.2116
+Epoch 1, Batch 150/164, Loss: 0.7138
+Epoch 1, Batch 160/164, Loss: 1.1572
+Epoch 1/10 | Train Loss: 1.2128 Acc: 0.6188 | Val Loss: 0.7357 Acc: 0.7669 | LR: 0.000100 | Time: 59.6s
+Epoch 2, Batch 0/164, Loss: 0.6783
+Epoch 2, Batch 10/164, Loss: 1.0181
+Epoch 2, Batch 20/164, Loss: 1.0107
+Epoch 2, Batch 30/164, Loss: 1.0114
+Epoch 2, Batch 40/164, Loss: 0.5069
+Epoch 2, Batch 50/164, Loss: 0.8221
+Epoch 2, Batch 60/164, Loss: 1.1358
+Epoch 2, Batch 70/164, Loss: 0.3334
+Epoch 2, Batch 80/164, Loss: 0.3410
+Epoch 2, Batch 90/164, Loss: 0.5623
+Epoch 2, Batch 100/164, Loss: 0.2061
+Epoch 2, Batch 110/164, Loss: 0.2933
+Epoch 2, Batch 120/164, Loss: 0.5902
+Epoch 2, Batch 130/164, Loss: 0.4762
+Epoch 2, Batch 140/164, Loss: 1.0519
+Epoch 2, Batch 150/164, Loss: 0.3530
+Epoch 2, Batch 160/164, Loss: 0.6196
+Epoch 2/10 | Train Loss: 0.6601 Acc: 0.7879 | Val Loss: 0.5319 Acc: 0.8310 | LR: 0.000100 | Time: 63.7s
+Epoch 3, Batch 0/164, Loss: 0.6998
+Epoch 3, Batch 10/164, Loss: 0.3323
+Epoch 3, Batch 20/164, Loss: 0.7930
+Epoch 3, Batch 30/164, Loss: 0.6643
+Epoch 3, Batch 40/164, Loss: 0.4548
+Epoch 3, Batch 50/164, Loss: 0.7903
+Epoch 3, Batch 60/164, Loss: 0.3686
+Epoch 3, Batch 70/164, Loss: 0.5351
+Epoch 3, Batch 80/164, Loss: 0.4581
+Epoch 3, Batch 90/164, Loss: 0.3739
+Epoch 3, Batch 100/164, Loss: 0.2851
+Epoch 3, Batch 110/164, Loss: 0.3956
+Epoch 3, Batch 120/164, Loss: 0.1902
+Epoch 3, Batch 130/164, Loss: 0.3314
+Epoch 3, Batch 140/164, Loss: 0.1910
+Epoch 3, Batch 150/164, Loss: 0.3952
+Epoch 3, Batch 160/164, Loss: 0.2961
+Epoch 3/10 | Train Loss: 0.5099 Acc: 0.8352 | Val Loss: 0.4102 Acc: 0.8737 | LR: 0.000100 | Time: 62.4s
+Epoch 4, Batch 0/164, Loss: 0.2644
+Epoch 4, Batch 10/164, Loss: 0.4585
+Epoch 4, Batch 20/164, Loss: 0.5683
+Epoch 4, Batch 30/164, Loss: 0.4545
+Epoch 4, Batch 40/164, Loss: 0.2599
+Epoch 4, Batch 50/164, Loss: 0.8457
+Epoch 4, Batch 60/164, Loss: 0.4944
+Epoch 4, Batch 70/164, Loss: 0.5112
+Epoch 4, Batch 80/164, Loss: 0.3678
+Epoch 4, Batch 90/164, Loss: 0.5445
+Epoch 4, Batch 100/164, Loss: 0.4334
+Epoch 4, Batch 110/164, Loss: 0.4078
+Epoch 4, Batch 120/164, Loss: 0.1758
+Epoch 4, Batch 130/164, Loss: 0.2612
+Epoch 4, Batch 140/164, Loss: 0.3439
+Epoch 4, Batch 150/164, Loss: 0.3313
+Epoch 4, Batch 160/164, Loss: 0.4809
+Epoch 4/10 | Train Loss: 0.4375 Acc: 0.8623 | Val Loss: 0.4347 Acc: 0.8381 | LR: 0.000100 | Time: 61.3s
+Epoch 5, Batch 0/164, Loss: 0.3285
+Epoch 5, Batch 10/164, Loss: 0.1258
+Epoch 5, Batch 20/164, Loss: 0.4119
+Epoch 5, Batch 30/164, Loss: 0.7568
+Epoch 5, Batch 40/164, Loss: 0.6682
+Epoch 5, Batch 50/164, Loss: 0.6844
+Epoch 5, Batch 60/164, Loss: 0.4758
+Epoch 5, Batch 70/164, Loss: 0.6387
+Epoch 5, Batch 80/164, Loss: 0.1367
+Epoch 5, Batch 90/164, Loss: 0.4644
+Epoch 5, Batch 100/164, Loss: 0.3959
+Epoch 5, Batch 110/164, Loss: 0.1697
+Epoch 5, Batch 120/164, Loss: 0.1249
+Epoch 5, Batch 130/164, Loss: 0.1492
+Epoch 5, Batch 140/164, Loss: 0.2771
+Epoch 5, Batch 150/164, Loss: 0.4605
+Epoch 5, Batch 160/164, Loss: 0.3227
+Epoch 5/10 | Train Loss: 0.4411 Acc: 0.8577 | Val Loss: 0.4086 Acc: 0.8665 | LR: 0.000100 | Time: 64.8s
+Epoch 6, Batch 0/164, Loss: 0.5256
+Epoch 6, Batch 10/164, Loss: 0.1450
+Epoch 6, Batch 20/164, Loss: 0.3792
+Epoch 6, Batch 30/164, Loss: 0.5693
+Epoch 6, Batch 40/164, Loss: 0.1092
+Epoch 6, Batch 50/164, Loss: 0.3037
+Epoch 6, Batch 60/164, Loss: 0.6526
+Epoch 6, Batch 70/164, Loss: 0.6808
+Epoch 6, Batch 80/164, Loss: 0.3464
+Epoch 6, Batch 90/164, Loss: 0.4344
+Epoch 6, Batch 100/164, Loss: 0.2253
+Epoch 6, Batch 110/164, Loss: 0.1809
+Epoch 6, Batch 120/164, Loss: 0.1470
+Epoch 6, Batch 130/164, Loss: 0.1560
+Epoch 6, Batch 140/164, Loss: 0.2750
+Epoch 6, Batch 150/164, Loss: 0.7434
+Epoch 6, Batch 160/164, Loss: 0.1356
+Epoch 6/10 | Train Loss: 0.3513 Acc: 0.8882 | Val Loss: 0.3467 Acc: 0.8683 | LR: 0.000100 | Time: 60.5s
+Epoch 7, Batch 0/164, Loss: 0.3300
+Epoch 7, Batch 10/164, Loss: 0.2395
+Epoch 7, Batch 20/164, Loss: 0.3401
+Epoch 7, Batch 30/164, Loss: 0.2094
+Epoch 7, Batch 40/164, Loss: 0.3753
+Epoch 7, Batch 50/164, Loss: 0.3767
+Epoch 7, Batch 60/164, Loss: 0.2604
+Epoch 7, Batch 70/164, Loss: 0.1242
+Epoch 7, Batch 80/164, Loss: 0.1859
+Epoch 7, Batch 90/164, Loss: 0.5352
+Epoch 7, Batch 100/164, Loss: 0.2200
+Epoch 7, Batch 110/164, Loss: 0.9342
+Epoch 7, Batch 120/164, Loss: 0.1318
+Epoch 7, Batch 130/164, Loss: 0.2423
+Epoch 7, Batch 140/164, Loss: 0.2375
+Epoch 7, Batch 150/164, Loss: 0.4717
+Epoch 7, Batch 160/164, Loss: 0.3802
+Epoch 7/10 | Train Loss: 0.3605 Acc: 0.8863 | Val Loss: 0.3884 Acc: 0.8843 | LR: 0.000100 | Time: 61.4s
+Epoch 8, Batch 0/164, Loss: 0.7763
+Epoch 8, Batch 10/164, Loss: 0.6939
+Epoch 8, Batch 20/164, Loss: 0.1551
+Epoch 8, Batch 30/164, Loss: 0.2561
+Epoch 8, Batch 40/164, Loss: 0.4394
+Epoch 8, Batch 50/164, Loss: 0.3658
+Epoch 8, Batch 60/164, Loss: 0.3158
+Epoch 8, Batch 70/164, Loss: 0.1517
+Epoch 8, Batch 80/164, Loss: 0.1585
+Epoch 8, Batch 90/164, Loss: 0.2105
+Epoch 8, Batch 100/164, Loss: 0.1165
+Epoch 8, Batch 110/164, Loss: 0.0520
+Epoch 8, Batch 120/164, Loss: 0.3132
+Epoch 8, Batch 130/164, Loss: 0.4196
+Epoch 8, Batch 140/164, Loss: 0.3773
+Epoch 8, Batch 150/164, Loss: 0.3071
+Epoch 8, Batch 160/164, Loss: 0.4423
+Epoch 8/10 | Train Loss: 0.2943 Acc: 0.9012 | Val Loss: 0.3421 Acc: 0.8790 | LR: 0.000100 | Time: 63.7s
+Epoch 9, Batch 0/164, Loss: 0.1327
+Epoch 9, Batch 10/164, Loss: 0.2170
+Epoch 9, Batch 20/164, Loss: 0.1662
+Epoch 9, Batch 30/164, Loss: 0.4434
+Epoch 9, Batch 40/164, Loss: 0.5057
+Epoch 9, Batch 50/164, Loss: 0.0701
+Epoch 9, Batch 60/164, Loss: 0.8234
+Epoch 9, Batch 70/164, Loss: 0.0997
+Epoch 9, Batch 80/164, Loss: 0.0952
+Epoch 9, Batch 90/164, Loss: 0.1090
+Epoch 9, Batch 100/164, Loss: 0.1465
+Epoch 9, Batch 110/164, Loss: 0.0860
+Epoch 9, Batch 120/164, Loss: 0.3959
+Epoch 9, Batch 130/164, Loss: 0.4699
+Epoch 9, Batch 140/164, Loss: 0.4703
+Epoch 9, Batch 150/164, Loss: 0.0928
+Epoch 9, Batch 160/164, Loss: 0.0583
+Epoch 9/10 | Train Loss: 0.2775 Acc: 0.9081 | Val Loss: 0.3012 Acc: 0.9075 | LR: 0.000100 | Time: 62.2s
+Epoch 10, Batch 0/164, Loss: 0.4089
+Epoch 10, Batch 10/164, Loss: 0.1775
+Epoch 10, Batch 20/164, Loss: 0.0256
+Epoch 10, Batch 30/164, Loss: 0.3001
+Epoch 10, Batch 40/164, Loss: 0.2423
+Epoch 10, Batch 50/164, Loss: 0.1484
+Epoch 10, Batch 60/164, Loss: 0.0875
+Epoch 10, Batch 70/164, Loss: 0.0855
+Epoch 10, Batch 80/164, Loss: 0.1857
+Epoch 10, Batch 90/164, Loss: 0.3175
+Epoch 10, Batch 100/164, Loss: 0.3489
+Epoch 10, Batch 110/164, Loss: 0.0907
+Epoch 10, Batch 120/164, Loss: 0.3411
+Epoch 10, Batch 130/164, Loss: 0.2124
+Epoch 10, Batch 140/164, Loss: 0.1466
+Epoch 10, Batch 150/164, Loss: 0.1930
+Epoch 10, Batch 160/164, Loss: 0.6784
+Epoch 10/10 | Train Loss: 0.2369 Acc: 0.9237 | Val Loss: 0.3167 Acc: 0.9004 | LR: 0.000100 | Time: 65.6s
+Training completed.
+Training complete. Evaluating on test set...
+Test set predictions complete. Generating confusion matrix...
+ 
+
+Classification Report:
+                      precision    recall  f1-score   support
+
+               aphid     0.9750    0.8864    0.9286        44
+           army_worm     1.0000    0.9767    0.9882        43
+          black_rust     0.7347    0.7826    0.7579        46
+          brown_rust     0.9318    0.9318    0.9318        44
+         common_rust     0.9412    0.9057    0.9231        53
+fusarium_head_blight     0.9459    1.0000    0.9722        35
+             healthy     0.8861    0.9722    0.9272        72
+         leaf_blight     0.7500    0.5745    0.6506        47
+ powdery_mildew_leaf     0.8864    0.7222    0.7959        54
+            spetoria     0.9091    0.9756    0.9412        41
+            tan_spot     0.5400    0.7297    0.6207        37
+         yellow_rust     1.0000    1.0000    1.0000        47
+
+            accuracy                         0.8721       563
+           macro avg     0.8750    0.8715    0.8698       563
+        weighted avg     0.8790    0.8721    0.8722       563
+
+Model saved to ../saved_models_and_data/wheat_disease_hybrid_model.pth
+
