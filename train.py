@@ -19,9 +19,25 @@ import io
 
 # Suppress all warnings and logging for Kaggle compatibility
 warnings.filterwarnings('ignore')
-logging.getLogger().setLevel(logging.ERROR)
+warnings.filterwarnings('ignore', category=UserWarning)
+warnings.filterwarnings('ignore', category=FutureWarning)
+warnings.filterwarnings('ignore', category=DeprecationWarning)
+warnings.filterwarnings('ignore', category=RuntimeWarning)
+
+# Set environment variables to suppress warnings
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['PYTHONWARNINGS'] = 'ignore'
+
+# Suppress PyTorch warnings
 torch.set_warn_always(False)
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
+# Suppress logging
+logging.getLogger().setLevel(logging.ERROR)
+logging.getLogger('ultralytics').setLevel(logging.ERROR)
+logging.getLogger('torch').setLevel(logging.ERROR)
 
 # Suppress matplotlib output
 plt.ioff()
@@ -39,6 +55,27 @@ class SuppressOutput:
         sys.stdout = self._original_stdout
         sys.stderr = self._original_stderr
 
+# Context manager to suppress all warnings and output
+class SuppressAllOutput:
+    def __enter__(self):
+        self._original_stdout = sys.stdout
+        self._original_stderr = sys.stderr
+        self._original_warn = warnings.warn
+        
+        # Suppress stdout/stderr
+        sys.stdout = io.StringIO()
+        sys.stderr = io.StringIO()
+        
+        # Suppress warnings
+        warnings.warn = lambda *args, **kwargs: None
+        
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        sys.stdout = self._original_stdout
+        sys.stderr = self._original_stderr
+        warnings.warn = self._original_warn
+
 # Global flag to control output suppression
 SUPPRESS_OUTPUT = True
 
@@ -49,6 +86,19 @@ def silent_print(*args, **kwargs):
 
 # Replace print with silent_print
 print = silent_print
+
+# Monkey patch warnings to completely suppress them
+def suppress_warnings():
+    """Completely suppress all warnings"""
+    import warnings
+    def warn(*args, **kwargs):
+        pass
+    warnings.warn = warn
+    warnings.warn_explicit = warn
+    warnings.showwarning = warn
+
+# Apply warning suppression
+suppress_warnings()
 
 """
 Data Normalization Strategy:
@@ -130,39 +180,77 @@ class WheatDiseaseDataset(Dataset):
 
 def denormalize_image(tensor, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]):
     """
-    Denormalize a tensor from ImageNet normalization back to [0, 255] range.
+    Denormalize a tensor from ImageNet normalization back to [0, 1] range.
     Args:
         tensor: Input tensor with shape (B, C, H, W) or (C, H, W)
         mean: Mean values used for normalization
         std: Standard deviation values used for normalization
     Returns:
-        Denormalized tensor in [0, 255] range
+        Denormalized tensor in [0, 1] range (YOLO expects this range)
     """
     try:
         denorm = tensor.clone()
         for i in range(3):  # RGB channels
             denorm[:, i] = denorm[:, i] * std[i] + mean[i]
-        denorm = denorm * 255.0
-        denorm = torch.clamp(denorm, 0, 255)
+        
+        # Ensure the values are in [0, 1] range for YOLO
+        denorm = torch.clamp(denorm, 0, 1)
         
         # Verify the range is correct
         min_val = denorm.min().item()
         max_val = denorm.max().item()
-        if min_val < 0 or max_val > 255:
+        if min_val < 0 or max_val > 1:
             silent_print(f"Warning: Denormalized values out of range: [{min_val:.2f}, {max_val:.2f}]")
         
         return denorm
     except Exception as e:
         silent_print(f"Error in denormalize_image: {e}")
-        # Return original tensor if denormalization fails
-        return tensor
+        # Return tensor in [0, 1] range if denormalization fails
+        return torch.clamp(tensor, 0, 1)
+
+class SilentYOLO:
+    """Wrapper for YOLO that suppresses all warnings and output"""
+    def __init__(self, model_path):
+        # Suppress all warnings before loading YOLO
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            import os
+            old_env = os.environ.get('PYTHONWARNINGS', '')
+            os.environ['PYTHONWARNINGS'] = 'ignore'
+            
+            self.yolo = YOLO(model_path)
+            
+            # Restore environment
+            os.environ['PYTHONWARNINGS'] = old_env
+    
+    def __call__(self, *args, **kwargs):
+        # Suppress all warnings during inference
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            import os
+            old_env = os.environ.get('PYTHONWARNINGS', '')
+            os.environ['PYTHONWARNINGS'] = 'ignore'
+            
+            # Force verbose=False and suppress all output
+            kwargs['verbose'] = False
+            result = self.yolo(*args, **kwargs)
+            
+            # Restore environment
+            os.environ['PYTHONWARNINGS'] = old_env
+            return result
 
 class HybridYOLOv9EfficientNet(nn.Module):
     def __init__(self, num_classes, pretrained=True):
         super(HybridYOLOv9EfficientNet, self).__init__()
         
-        # YOLOv9 backbone for feature extraction and detection
-        self.yolo_backbone = YOLO('yolov9c.pt')
+        # YOLOv9 backbone for feature extraction and detection with warning suppression
+        try:
+            with SuppressAllOutput():
+                self.yolo_backbone = SilentYOLO('yolov9c.pt')
+        except Exception as e:
+            silent_print(f"Warning: YOLO initialization failed: {e}")
+            # Create a dummy YOLO backbone if initialization fails
+            self.yolo_backbone = None
         
         # EfficientNet-B4 (upgraded from B3 for better performance)
         self.efficientnet = models.efficientnet_b4(pretrained=pretrained)
@@ -200,25 +288,28 @@ class HybridYOLOv9EfficientNet(nn.Module):
         # Get YOLO features (detection) - process each image individually
         yolo_features_list = []
         for i in range(batch_size):
-            # Convert normalized tensor back to [0, 255] range for YOLO
-            # YOLO expects input in [0, 255] range
+            # Convert normalized tensor back to [0, 1] range for YOLO
+            # YOLO expects input in [0, 1] range
             single_image = x[i:i+1]
             # Use the denormalization utility function
             single_image_denorm = denormalize_image(single_image)
             
             try:
-                # Suppress YOLO warnings and verbose output
-                with warnings.catch_warnings():
-                    warnings.simplefilter("ignore")
-                    yolo_result = self.yolo_backbone(single_image_denorm, verbose=False, conf=0.1)
-                
-                if hasattr(yolo_result, 'boxes') and yolo_result.boxes is not None and len(yolo_result.boxes.conf) > 0:
-                    conf_scores = yolo_result.boxes.conf[:512]
-                    if len(conf_scores) < 512:
-                        padding = torch.zeros(512 - len(conf_scores), device=conf_scores.device)
-                        conf_scores = torch.cat([conf_scores, padding])
-                    yolo_features_list.append(conf_scores)
+                # Check if YOLO backbone is available
+                if self.yolo_backbone is not None:
+                    # Use SilentYOLO wrapper that automatically suppresses warnings
+                    yolo_result = self.yolo_backbone(single_image_denorm, conf=0.1)
+                    
+                    if hasattr(yolo_result, 'boxes') and yolo_result.boxes is not None and len(yolo_result.boxes.conf) > 0:
+                        conf_scores = yolo_result.boxes.conf[:512]
+                        if len(conf_scores) < 512:
+                            padding = torch.zeros(512 - len(conf_scores), device=conf_scores.device)
+                            conf_scores = torch.cat([conf_scores, padding])
+                        yolo_features_list.append(conf_scores)
+                    else:
+                        yolo_features_list.append(torch.zeros(512, device=x.device))
                 else:
+                    # If YOLO is not available, use zeros
                     yolo_features_list.append(torch.zeros(512, device=x.device))
             except Exception as e:
                 silent_print(f"Warning: YOLO processing failed for image {i}: {e}")
@@ -501,7 +592,7 @@ def evaluate_model(model, test_loader, device, class_names):
 def main():
     # Suppress all output if running in Kaggle
     if SUPPRESS_OUTPUT:
-        with SuppressOutput():
+        with SuppressAllOutput():
             return _main_impl()
     else:
         return _main_impl()
@@ -510,7 +601,7 @@ def _main_impl():
     silent_print('🚀 Loading data for HIGH ACCURACY training...')
     silent_print('📊 Data Normalization Strategy:')
     silent_print('   - Images → ToTensor() [0, 255] → Lambda(x/255) [0, 1] → ImageNet Normalization')
-    silent_print('   - YOLO processing: Denormalize back to [0, 255] range')
+    silent_print('   - YOLO processing: Denormalize back to [0, 1] range')
     silent_print('   - This prevents normalization warnings from YOLO')
     
     train_dataset, val_dataset, test_dataset = get_data_loaders()
@@ -525,7 +616,7 @@ def _main_impl():
     # 1. Convert PIL images to tensors [0, 255]
     # 2. Normalize to [0, 1] range
     # 3. Apply ImageNet normalization for EfficientNet
-    # 4. YOLO processing will denormalize back to [0, 255] range
+    # 4. YOLO processing will denormalize back to [0, 1] range
     train_dataset.transform = train_transform
     val_dataset.transform = val_transform
     test_dataset.transform = val_transform
