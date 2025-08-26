@@ -12,100 +12,16 @@ import shutil
 from PIL import Image
 import time
 from torchvision import transforms, models
-import warnings
-import logging
-import contextlib
-import io
+# Standard imports
 
-# Suppress all warnings and logging for Kaggle compatibility
-warnings.filterwarnings('ignore')
-warnings.filterwarnings('ignore', category=UserWarning)
-warnings.filterwarnings('ignore', category=FutureWarning)
-warnings.filterwarnings('ignore', category=DeprecationWarning)
-warnings.filterwarnings('ignore', category=RuntimeWarning)
-
-# Set environment variables to suppress warnings
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-os.environ['PYTHONWARNINGS'] = 'ignore'
-
-# Suppress PyTorch warnings
-torch.set_warn_always(False)
-torch.backends.cudnn.deterministic = True
-torch.backends.cudnn.benchmark = False
-
-# Suppress logging
-logging.getLogger().setLevel(logging.ERROR)
-logging.getLogger('ultralytics').setLevel(logging.ERROR)
-logging.getLogger('torch').setLevel(logging.ERROR)
-
-# Suppress matplotlib output
-plt.ioff()
-
-# Context manager to suppress stdout/stderr
-class SuppressOutput:
-    def __enter__(self):
-        self._original_stdout = sys.stdout
-        self._original_stderr = sys.stderr
-        sys.stdout = io.StringIO()
-        sys.stderr = io.StringIO()
-        return self
-    
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        sys.stdout = self._original_stdout
-        sys.stderr = self._original_stderr
-
-# Context manager to suppress all warnings and output
-class SuppressAllOutput:
-    def __enter__(self):
-        self._original_stdout = sys.stdout
-        self._original_stderr = sys.stderr
-        self._original_warn = warnings.warn
-        
-        # Suppress stdout/stderr
-        sys.stdout = io.StringIO()
-        sys.stderr = io.StringIO()
-        
-        # Suppress warnings
-        warnings.warn = lambda *args, **kwargs: None
-        
-        return self
-    
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        sys.stdout = self._original_stdout
-        sys.stderr = self._original_stderr
-        warnings.warn = self._original_warn
-
-# Global flag to control output suppression
-SUPPRESS_OUTPUT = True
-
-def silent_print(*args, **kwargs):
-    """Silent print function that does nothing when output is suppressed"""
-    if not SUPPRESS_OUTPUT:
-        print(*args, **kwargs)
-
-# Replace print with silent_print
-print = silent_print
-
-# Monkey patch warnings to completely suppress them
-def suppress_warnings():
-    """Completely suppress all warnings"""
-    import warnings
-    def warn(*args, **kwargs):
-        pass
-    warnings.warn = warn
-    warnings.warn_explicit = warn
-    warnings.showwarning = warn
-
-# Apply warning suppression
-suppress_warnings()
+# Standard imports and setup
 
 """
 Data Normalization Strategy:
 - Input images are converted to tensors with [0, 255] range using ToTensor()
 - Then normalized to [0, 1] range using Lambda(x: x/255.0)
 - Finally normalized with ImageNet statistics for EfficientNet
-- For YOLO processing, images are denormalized back to [0, 255] range
+- For YOLO processing, images are denormalized back to [0, 1] range
 - This prevents the "torch.Tensor inputs should be normalized 0.0-1.0" warnings
 """
 
@@ -137,17 +53,13 @@ set_seed(42)
 try:
     import ultralytics
 except ImportError:
-    silent_print("Installing ultralytics (YOLOv9)...")
+    print("Installing ultralytics (YOLOv9)...")
     os.system(f"{sys.executable} -m pip install ultralytics")
     import ultralytics
 
 from ultralytics import YOLO
 
-# Suppress YOLO warnings
-import warnings
-warnings.filterwarnings('ignore', category=UserWarning)
-warnings.filterwarnings('ignore', category=FutureWarning)
-warnings.filterwarnings('ignore', category=DeprecationWarning)
+# Basic warning setup
 
 class WheatDiseaseDataset(Dataset):
     def __init__(self, root_dir, transform=None):
@@ -175,7 +87,7 @@ class WheatDiseaseDataset(Dataset):
                 image = self.transform(image)
             return image, target
         except Exception as e:
-            silent_print(f"Error loading {path}: {e}")
+            print(f"Error loading {path}: {e}")
             return self.__getitem__((idx + 1) % len(self))
 
 def denormalize_image(tensor, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]):
@@ -200,55 +112,33 @@ def denormalize_image(tensor, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.2
         min_val = denorm.min().item()
         max_val = denorm.max().item()
         if min_val < 0 or max_val > 1:
-            silent_print(f"Warning: Denormalized values out of range: [{min_val:.2f}, {max_val:.2f}]")
+            print(f"Warning: Denormalized values out of range: [{min_val:.2f}, {max_val:.2f}]")
         
         return denorm
     except Exception as e:
-        silent_print(f"Error in denormalize_image: {e}")
+        print(f"Error in denormalize_image: {e}")
         # Return tensor in [0, 1] range if denormalization fails
         return torch.clamp(tensor, 0, 1)
 
 class SilentYOLO:
-    """Wrapper for YOLO that suppresses all warnings and output"""
+    """Wrapper for YOLO that ensures proper input normalization"""
     def __init__(self, model_path):
-        # Suppress all warnings before loading YOLO
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            import os
-            old_env = os.environ.get('PYTHONWARNINGS', '')
-            os.environ['PYTHONWARNINGS'] = 'ignore'
-            
-            self.yolo = YOLO(model_path)
-            
-            # Restore environment
-            os.environ['PYTHONWARNINGS'] = old_env
+        self.yolo = YOLO(model_path)
     
     def __call__(self, *args, **kwargs):
-        # Suppress all warnings during inference
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            import os
-            old_env = os.environ.get('PYTHONWARNINGS', '')
-            os.environ['PYTHONWARNINGS'] = 'ignore'
-            
-            # Force verbose=False and suppress all output
-            kwargs['verbose'] = False
-            result = self.yolo(*args, **kwargs)
-            
-            # Restore environment
-            os.environ['PYTHONWARNINGS'] = old_env
-            return result
+        # Ensure verbose=False to reduce output
+        kwargs['verbose'] = False
+        return self.yolo(*args, **kwargs)
 
 class HybridYOLOv9EfficientNet(nn.Module):
     def __init__(self, num_classes, pretrained=True):
         super(HybridYOLOv9EfficientNet, self).__init__()
         
-        # YOLOv9 backbone for feature extraction and detection with warning suppression
+        # YOLOv9 backbone for feature extraction and detection
         try:
-            with SuppressAllOutput():
-                self.yolo_backbone = SilentYOLO('yolov9c.pt')
+            self.yolo_backbone = SilentYOLO('yolov9c.pt')
         except Exception as e:
-            silent_print(f"Warning: YOLO initialization failed: {e}")
+            print(f"Warning: YOLO initialization failed: {e}")
             # Create a dummy YOLO backbone if initialization fails
             self.yolo_backbone = None
         
@@ -297,7 +187,7 @@ class HybridYOLOv9EfficientNet(nn.Module):
             try:
                 # Check if YOLO backbone is available
                 if self.yolo_backbone is not None:
-                    # Use SilentYOLO wrapper that automatically suppresses warnings
+                    # Use SilentYOLO wrapper that ensures proper normalization
                     yolo_result = self.yolo_backbone(single_image_denorm, conf=0.1)
                     
                     if hasattr(yolo_result, 'boxes') and yolo_result.boxes is not None and len(yolo_result.boxes.conf) > 0:
@@ -312,7 +202,7 @@ class HybridYOLOv9EfficientNet(nn.Module):
                     # If YOLO is not available, use zeros
                     yolo_features_list.append(torch.zeros(512, device=x.device))
             except Exception as e:
-                silent_print(f"Warning: YOLO processing failed for image {i}: {e}")
+                print(f"Warning: YOLO processing failed for image {i}: {e}")
                 yolo_features_list.append(torch.zeros(512, device=x.device))
         
         yolo_feat = torch.stack(yolo_features_list)
@@ -351,12 +241,12 @@ def get_data_loaders():
     split_exists = all(os.path.isdir(d) and len([f for f in os.listdir(d) if os.path.isdir(os.path.join(d, f))]) > 0 for d in split_dirs)
 
     if split_exists:
-        silent_print('Found existing split dataset. Loading splits...')
+        print('Found existing split dataset. Loading splits...')
         train_dataset = WheatDiseaseDataset(os.path.join(SPLIT_OUTPUT_DIR, 'train'), transform=None)
         val_dataset = WheatDiseaseDataset(os.path.join(SPLIT_OUTPUT_DIR, 'val'), transform=None)
         test_dataset = WheatDiseaseDataset(os.path.join(SPLIT_OUTPUT_DIR, 'test'), transform=None)
     else:
-        silent_print('No split dataset found. Splitting and saving images...')
+        print('No split dataset found. Splitting and saving images...')
         full_dataset = WheatDiseaseDataset(DATASET_DIR, transform=None)
 
         generator = torch.Generator().manual_seed(42)
@@ -374,7 +264,7 @@ def get_data_loaders():
         test_data_subset = Subset(full_dataset, test_indices)
 
         def save_split_images(dataset_subset, split_name):
-            silent_print(f"Saving images for split: {split_name}")
+            print(f"Saving images for split: {split_name}")
             for idx_in_subset in range(len(dataset_subset)):
                 original_idx = dataset_subset.indices[idx_in_subset]
                 path, label_idx = full_dataset.samples[original_idx]
@@ -388,13 +278,13 @@ def get_data_loaders():
         save_split_images(train_data_subset, 'train')
         save_split_images(val_data_subset, 'val')
         save_split_images(test_data_subset, 'test')
-        silent_print('Image splits saved.')
+        print('Image splits saved.')
 
         train_dataset = WheatDiseaseDataset(os.path.join(SPLIT_OUTPUT_DIR, 'train'), transform=None)
         val_dataset = WheatDiseaseDataset(os.path.join(SPLIT_OUTPUT_DIR, 'val'), transform=None)
         test_dataset = WheatDiseaseDataset(os.path.join(SPLIT_OUTPUT_DIR, 'test'), transform=None)
 
-    silent_print('Data loaders are ready.')
+    print('Data loaders are ready.')
     return train_dataset, val_dataset, test_dataset
 
 def get_transforms():
@@ -424,7 +314,7 @@ def get_transforms():
     return train_transform, val_transform
 
 def train_model(model, train_loader, val_loader, num_classes, device):
-    silent_print("Starting hybrid model training for HIGH ACCURACY...")
+    print("Starting hybrid model training for HIGH ACCURACY...")
     
     # Enhanced loss function with label smoothing
     criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
@@ -470,7 +360,7 @@ def train_model(model, train_loader, val_loader, num_classes, device):
             train_correct += predicted.eq(labels).sum().item()
             
             if batch_idx % 10 == 0:
-                silent_print(f'Epoch {epoch+1}/{EPOCHS}, Batch {batch_idx}/{len(train_loader)}, '
+                print(f'Epoch {epoch+1}/{EPOCHS}, Batch {batch_idx}/{len(train_loader)}, '
                       f'Loss: {loss.item():.4f}, Acc: {100.*train_correct/train_total:.2f}%')
         
         # Validation phase
@@ -493,10 +383,10 @@ def train_model(model, train_loader, val_loader, num_classes, device):
         train_acc = 100. * train_correct / train_total
         val_acc = 100. * val_correct / val_total
         
-        silent_print(f'Epoch {epoch+1}/{EPOCHS}:')
-        silent_print(f'  Train Loss: {train_loss/len(train_loader):.4f}, Train Acc: {train_acc:.2f}%')
-        silent_print(f'  Val Loss: {val_loss/len(val_loader):.4f}, Val Acc: {val_acc:.2f}%')
-        silent_print(f'  Learning Rate: {scheduler.get_last_lr()[0]:.6f}')
+        print(f'Epoch {epoch+1}/{EPOCHS}:')
+        print(f'  Train Loss: {train_loss/len(train_loader):.4f}, Train Acc: {train_acc:.2f}%')
+        print(f'  Val Loss: {val_loss/len(val_loader):.4f}, Val Acc: {val_acc:.2f}%')
+        print(f'  Learning Rate: {scheduler.get_last_lr()[0]:.6f}')
         
         # Learning rate scheduling
         scheduler.step()
@@ -506,12 +396,12 @@ def train_model(model, train_loader, val_loader, num_classes, device):
             best_acc = val_acc
             no_improvement_epochs = 0
             torch.save(model.state_dict(), os.path.join(SAVE_DIR, 'best_hybrid_model.pth'))
-            silent_print(f'  🎯 New best validation accuracy: {best_acc:.2f}%')
+            print(f'  🎯 New best validation accuracy: {best_acc:.2f}%')
         else:
             no_improvement_epochs += 1
             
         if no_improvement_epochs >= EARLY_STOPPING_PATIENCE:
-            silent_print(f'Early stopping after {EARLY_STOPPING_PATIENCE} epochs without improvement')
+            print(f'Early stopping after {EARLY_STOPPING_PATIENCE} epochs without improvement')
             break
         
         train_log.append({
@@ -524,12 +414,12 @@ def train_model(model, train_loader, val_loader, num_classes, device):
         })
     
     total_time = time.time() - start_time
-    silent_print(f"Training completed in {total_time/60:.1f} minutes")
+    print(f"Training completed in {total_time/60:.1f} minutes")
     
     return train_log
 
 def evaluate_model(model, test_loader, device, class_names):
-    silent_print("Evaluating model on test set...")
+    print("Evaluating model on test set...")
     
     model.eval()
     all_predictions = []
@@ -540,7 +430,7 @@ def evaluate_model(model, test_loader, device, class_names):
     with torch.no_grad():
         for batch_idx, (inputs, labels) in enumerate(test_loader):
             if batch_idx % 50 == 0:
-                silent_print(f"Processing batch {batch_idx+1}/{len(test_loader)}")
+                print(f"Processing batch {batch_idx+1}/{len(test_loader)}")
             
             inputs, labels = inputs.to(device), labels.to(device)
             outputs = model(inputs)
@@ -553,19 +443,19 @@ def evaluate_model(model, test_loader, device, class_names):
             test_correct += predicted.eq(labels).sum().item()
     
     test_accuracy = 100. * test_correct / test_total
-    silent_print(f'🎯 Test Accuracy: {test_accuracy:.2f}%')
+    print(f'🎯 Test Accuracy: {test_accuracy:.2f}%')
     
     # Classification report
-    silent_print("\n📊 Classification Report:")
+    print("\n📊 Classification Report:")
     report = classification_report(all_labels, all_predictions, target_names=class_names, digits=4)
-    silent_print(report)
+    print(report)
     
     # Create confusion matrix
-    silent_print(" Creating confusion matrix...")
+    print(" Creating confusion matrix...")
     cm = confusion_matrix(all_labels, all_predictions)
-    silent_print(f"Confusion matrix created successfully: {cm.shape}")
-    silent_print("Confusion matrix values:")
-    silent_print(cm)
+    print(f"Confusion matrix created successfully: {cm.shape}")
+    print("Confusion matrix values:")
+    print(cm)
     
     # Create enhanced confusion matrix plot
     plt.figure(figsize=(14, 12))
@@ -584,30 +474,22 @@ def evaluate_model(model, test_loader, device, class_names):
     
     save_path = os.path.join(SAVE_DIR, 'high_accuracy_hybrid_model_confusion_matrix.png')
     plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
-    silent_print(f"Confusion matrix saved to: {save_path}")
-    plt.close()  # Close plot to prevent display
+    print(f"Confusion matrix saved to: {save_path}")
+    plt.show()  # Show plot
     
     return test_accuracy, all_predictions, all_labels
 
 def main():
-    # Suppress all output if running in Kaggle
-    if SUPPRESS_OUTPUT:
-        with SuppressAllOutput():
-            return _main_impl()
-    else:
-        return _main_impl()
-
-def _main_impl():
-    silent_print('🚀 Loading data for HIGH ACCURACY training...')
-    silent_print('📊 Data Normalization Strategy:')
-    silent_print('   - Images → ToTensor() [0, 255] → Lambda(x/255) [0, 1] → ImageNet Normalization')
-    silent_print('   - YOLO processing: Denormalize back to [0, 1] range')
-    silent_print('   - This prevents normalization warnings from YOLO')
+    print('🚀 Loading data for HIGH ACCURACY training...')
+    print('📊 Data Normalization Strategy:')
+    print('   - Images → ToTensor() [0, 255] → Lambda(x/255) [0, 1] → ImageNet Normalization')
+    print('   - YOLO processing: Denormalize back to [0, 1] range')
+    print('   - This prevents normalization warnings from YOLO')
     
     train_dataset, val_dataset, test_dataset = get_data_loaders()
     class_labels = train_dataset.classes
     NUM_CLASSES = len(class_labels)
-    silent_print('Data loaded. Classes:', class_labels)
+    print('Data loaded. Classes:', class_labels)
     
     train_transform, val_transform = get_transforms()
     
@@ -625,23 +507,23 @@ def _main_impl():
     val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=0)
     test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=0)
     
-    silent_print('🏗️ Initializing enhanced hybrid model...')
+    print('🏗️ Initializing enhanced hybrid model...')
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    silent_print(f"Using device: {device}")
+    print(f"Using device: {device}")
     
     model = HybridYOLOv9EfficientNet(NUM_CLASSES, pretrained=True)
     model = model.to(device)
     
-    silent_print('Model initialized. Starting HIGH ACCURACY training...')
+    print('Model initialized. Starting HIGH ACCURACY training...')
     train_log = train_model(model, train_loader, val_loader, NUM_CLASSES, device)
     
-    silent_print('Training complete. Evaluating on test set...')
+    print('Training complete. Evaluating on test set...')
     test_acc, predictions, labels = evaluate_model(model, test_loader, device, class_labels)
     
     # Save final model
     final_model_path = os.path.join(SAVE_DIR, 'high_accuracy_hybrid_yolov9_efficientnet_model.pth')
     torch.save(model.state_dict(), final_model_path)
-    silent_print(f'Final model saved to {final_model_path}')
+    print(f'Final model saved to {final_model_path}')
     
     # Save training log
     import json
@@ -660,7 +542,7 @@ def _main_impl():
     
     with open(os.path.join(SAVE_DIR, "high_accuracy_hybrid_model_training_log.json"), 'w') as f:
         json.dump(training_log, f, indent=2)
-    silent_print('Training log saved.')
+    print('Training log saved.')
     
     # Plot enhanced training curves
     epochs = [log['epoch'] for log in train_log]
@@ -700,10 +582,10 @@ def _main_impl():
     
     plt.tight_layout()
     plt.savefig(os.path.join(SAVE_DIR, 'high_accuracy_hybrid_model_training_curves.png'), dpi=300, bbox_inches='tight')
-    plt.close()  # Close plot to prevent display
+    plt.show()  # Show plot
     
-    silent_print("🎉 High Accuracy Hybrid model training completed successfully!")
-    silent_print(f"🏆 Final Test Accuracy: {test_acc:.2f}%")
+    print("🎉 High Accuracy Hybrid model training completed successfully!")
+    print(f"🏆 Final Test Accuracy: {test_acc:.2f}%")
     return model
 
 if __name__ == "__main__":
