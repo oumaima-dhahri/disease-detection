@@ -18,6 +18,9 @@ import yaml
 import json
 from pathlib import Path
 warnings.filterwarnings('ignore')
+# Suppress PyTorch tensor normalization warnings
+warnings.filterwarnings('ignore', message='.*torch.Tensor inputs should be normalized.*')
+warnings.filterwarnings('ignore', message='.*Dividing input by 255.*')
 
 # -----------------------------
 # Configuration
@@ -372,12 +375,16 @@ def main():
         transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
         transforms.RandomAffine(degrees=0, translate=(0.1, 0.1), scale=(0.9, 1.1)),
         transforms.ToTensor(),
+        # Ensure proper normalization to prevent warnings
+        transforms.Lambda(lambda x: torch.clamp(x, 0, 1)),  # Clamp to [0, 1] range
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
     
     test_transform = transforms.Compose([
         transforms.Resize(IMAGE_SIZE),
         transforms.ToTensor(),
+        # Ensure proper normalization to prevent warnings
+        transforms.Lambda(lambda x: torch.clamp(x, 0, 1)),  # Clamp to [0, 1] range
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
     
