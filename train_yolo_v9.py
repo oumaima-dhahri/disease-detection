@@ -30,7 +30,7 @@ IMAGE_SIZE = (640, 640)  # YOLO v9 standard size
 BATCH_SIZE = 16
 TEST_SIZE = 0.15
 VAL_SIZE = 0.15
-EPOCHS = 100  # YOLO typically needs more epochs
+EPOCHS = 10  # YOLO typically needs more epochs
 
 LEARNING_RATE = 1e-4
 EARLY_STOPPING_PATIENCE = 10
