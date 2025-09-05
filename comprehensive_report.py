@@ -535,3 +535,4 @@ for i in range(1, 16):
         print(f"   {i:02d}. Chart {i}")
 
 print(f"\n💡 All files are saved in the '{REPORT_DIR}/' folder for easy access!")
+
