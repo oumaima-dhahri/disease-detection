@@ -59,16 +59,22 @@ print(f"\n🔍 Checking converted script...")
 with open(OUTPUT_PY_FILE, 'r', encoding='utf-8') as f:
     content = f.read()
     
-# Check for problematic patterns
+print(f"File length: {len(content)} characters")
+
+# Check for problematic patterns with detailed debugging
 issues = []
 if '%matplotlib' in content:
     issues.append('Found %matplotlib magic command')
+    print(f"Found %matplotlib at position: {content.find('%matplotlib')}")
 if 'get_ipython()' in content:
     issues.append('Found get_ipython() call')
+    print(f"Found get_ipython() at position: {content.find('get_ipython()')}")
 if 'plt.show()' in content:
     issues.append('Found plt.show() calls')
+    print(f"Found plt.show() at position: {content.find('plt.show()')}")
 if 'IPython.display' in content:
     issues.append('Found IPython.display import')
+    print(f"Found IPython.display at position: {content.find('IPython.display')}")
 
 if issues:
     print('❌ Issues found in converted script:')

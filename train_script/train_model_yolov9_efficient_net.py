@@ -601,6 +601,7 @@ def main():
     
     plt.tight_layout()
     plt.savefig(os.path.join(SAVE_DIR, 'hybrid_model_training_curves.png'), dpi=300, bbox_inches='tight')
+
     plt.close()
     
     print("Hybrid model training completed successfully!")
