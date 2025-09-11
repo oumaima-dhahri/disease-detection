@@ -65,16 +65,24 @@ print(f"File length: {len(content)} characters")
 issues = []
 if '%matplotlib' in content:
     issues.append('Found %matplotlib magic command')
-    print(f"Found %matplotlib at position: {content.find('%matplotlib')}")
+    pos = content.find('%matplotlib')
+    print(f"Found %matplotlib at position: {pos}")
+    print(f"Context: {content[pos-50:pos+50]}")
 if 'get_ipython()' in content:
     issues.append('Found get_ipython() call')
-    print(f"Found get_ipython() at position: {content.find('get_ipython()')}")
+    pos = content.find('get_ipython()')
+    print(f"Found get_ipython() at position: {pos}")
+    print(f"Context: {content[pos-50:pos+50]}")
 if 'plt.show()' in content:
     issues.append('Found plt.show() calls')
-    print(f"Found plt.show() at position: {content.find('plt.show()')}")
+    pos = content.find('plt.show()')
+    print(f"Found plt.show() at position: {pos}")
+    print(f"Context: {content[pos-50:pos+50]}")
 if 'IPython.display' in content:
     issues.append('Found IPython.display import')
-    print(f"Found IPython.display at position: {content.find('IPython.display')}")
+    pos = content.find('IPython.display')
+    print(f"Found IPython.display at position: {pos}")
+    print(f"Context: {content[pos-50:pos+50]}")
 
 if issues:
     print('❌ Issues found in converted script:')
