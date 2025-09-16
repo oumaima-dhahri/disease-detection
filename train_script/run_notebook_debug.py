@@ -124,3 +124,4 @@ if __name__ == "__main__":
     # Run the notebook with debug
     exit_code = run_notebook_debug(notebook_file)
     sys.exit(exit_code)
+

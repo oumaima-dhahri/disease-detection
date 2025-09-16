@@ -1,0 +1,45 @@
+p.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=USE_MIXED_PRECISION)
+Epoch 1/20 | Train Loss: 0.9060 Acc: 0.7047 | Val Loss: 0.4977 Acc: 0.8167
+Epoch 2/20 | Train Loss: 0.4428 Acc: 0.8497 | Val Loss: 0.4836 Acc: 0.8256
+Epoch 3/20 | Train Loss: 0.3158 Acc: 0.8970 | Val Loss: 0.4312 Acc: 0.8523
+Epoch 4/20 | Train Loss: 0.2500 Acc: 0.9126 | Val Loss: 0.3131 Acc: 0.8897
+Epoch 5/20 | Train Loss: 0.2246 Acc: 0.9229 | Val Loss: 0.2890 Acc: 0.9146
+Epoch 6/20 | Train Loss: 0.1763 Acc: 0.9382 | Val Loss: 0.3450 Acc: 0.8932
+Epoch 7/20 | Train Loss: 0.1542 Acc: 0.9496 | Val Loss: 0.3723 Acc: 0.9039
+Epoch 8/20 | Train Loss: 0.1431 Acc: 0.9519 | Val Loss: 0.3272 Acc: 0.8968
+Epoch 9/20 | Train Loss: 0.0833 Acc: 0.9702 | Val Loss: 0.2642 Acc: 0.9164
+Epoch 10/20 | Train Loss: 0.0579 Acc: 0.9802 | Val Loss: 0.2593 Acc: 0.9146
+Epoch 11/20 | Train Loss: 0.0504 Acc: 0.9851 | Val Loss: 0.2567 Acc: 0.9199
+Epoch 12/20 | Train Loss: 0.0469 Acc: 0.9851 | Val Loss: 0.2534 Acc: 0.9217
+Epoch 13/20 | Train Loss: 0.0375 Acc: 0.9863 | Val Loss: 0.2660 Acc: 0.9181
+Epoch 14/20 | Train Loss: 0.0424 Acc: 0.9863 | Val Loss: 0.2658 Acc: 0.9181
+Epoch 15/20 | Train Loss: 0.0358 Acc: 0.9889 | Val Loss: 0.2838 Acc: 0.9128
+Epoch 16/20 | Train Loss: 0.0271 Acc: 0.9908 | Val Loss: 0.2819 Acc: 0.9146
+Epoch 17/20 | Train Loss: 0.0394 Acc: 0.9863 | Val Loss: 0.2829 Acc: 0.9146
+Early stopping triggered.
+Training complete.
+Model saved to ../saved_models_and_data/final_hybrid_model.pth
+Test set predictions complete. Generating confusion matrix...
+Figure(1200x1000)
+
+Classification Report:
+                      precision    recall  f1-score   support
+
+               aphid     0.9737    0.8409    0.9024        44
+           army_worm     0.9767    0.9767    0.9767        43
+          black_rust     0.9091    0.8696    0.8889        46
+          brown_rust     0.9348    0.9773    0.9556        44
+         common_rust     0.9455    0.9811    0.9630        53
+fusarium_head_blight     0.9444    0.9714    0.9577        35
+             healthy     0.9589    0.9722    0.9655        72
+         leaf_blight     0.8000    0.6809    0.7356        47
+ powdery_mildew_leaf     0.8833    0.9815    0.9298        54
+            spetoria     0.9756    0.9756    0.9756        41
+            tan_spot     0.6500    0.7027    0.6753        37
+         yellow_rust     1.0000    1.0000    1.0000        47
+
+            accuracy                         0.9165       563
+           macro avg     0.9127    0.9108    0.9105       563
+        weighted avg     0.9171    0.9165    0.9156       563
+

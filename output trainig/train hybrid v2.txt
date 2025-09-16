@@ -1,0 +1,44 @@
+Epoch 1/20 | Train Loss: 1.0472 Acc: 0.6623 | Val Loss: 0.4712 Acc: 0.8381
+Epoch 2/20 | Train Loss: 0.4059 Acc: 0.8623 | Val Loss: 0.3103 Acc: 0.8915
+Epoch 3/20 | Train Loss: 0.3036 Acc: 0.9012 | Val Loss: 0.4062 Acc: 0.8808
+Epoch 4/20 | Train Loss: 0.2541 Acc: 0.9142 | Val Loss: 0.3721 Acc: 0.8861
+Epoch 5/20 | Train Loss: 0.2333 Acc: 0.9191 | Val Loss: 0.2979 Acc: 0.9021
+Epoch 6/20 | Train Loss: 0.2010 Acc: 0.9329 | Val Loss: 0.3133 Acc: 0.8950
+Epoch 7/20 | Train Loss: 0.1704 Acc: 0.9416 | Val Loss: 0.3236 Acc: 0.8879
+Epoch 8/20 | Train Loss: 0.1772 Acc: 0.9412 | Val Loss: 0.2529 Acc: 0.9039
+Epoch 9/20 | Train Loss: 0.1274 Acc: 0.9515 | Val Loss: 0.3066 Acc: 0.9110
+Epoch 10/20 | Train Loss: 0.1366 Acc: 0.9519 | Val Loss: 0.3089 Acc: 0.9110
+Epoch 11/20 | Train Loss: 0.1062 Acc: 0.9649 | Val Loss: 0.3173 Acc: 0.9235
+Epoch 12/20 | Train Loss: 0.0699 Acc: 0.9767 | Val Loss: 0.2792 Acc: 0.9235
+Epoch 13/20 | Train Loss: 0.0457 Acc: 0.9844 | Val Loss: 0.2652 Acc: 0.9235
+Epoch 14/20 | Train Loss: 0.0336 Acc: 0.9886 | Val Loss: 0.2572 Acc: 0.9288
+Epoch 15/20 | Train Loss: 0.0444 Acc: 0.9836 | Val Loss: 0.2600 Acc: 0.9270
+Epoch 16/20 | Train Loss: 0.0294 Acc: 0.9912 | Val Loss: 0.2622 Acc: 0.9253
+Epoch 17/20 | Train Loss: 0.0318 Acc: 0.9882 | Val Loss: 0.2648 Acc: 0.9235
+Epoch 18/20 | Train Loss: 0.0278 Acc: 0.9920 | Val Loss: 0.2651 Acc: 0.9235
+Epoch 19/20 | Train Loss: 0.0386 Acc: 0.9863 | Val Loss: 0.2654 Acc: 0.9235
+Early stopping triggered.
+Classification Report:
+                      precision    recall  f1-score   support
+
+               aphid     0.9512    0.8864    0.9176        44
+           army_worm     0.9767    0.9767    0.9767        43
+          black_rust     0.9524    0.8696    0.9091        46
+          brown_rust     0.9348    0.9773    0.9556        44
+         common_rust     0.9273    0.9623    0.9444        53
+fusarium_head_blight     0.9459    1.0000    0.9722        35
+             healthy     0.9718    0.9583    0.9650        72
+         leaf_blight     0.7692    0.6383    0.6977        47
+ powdery_mildew_leaf     0.8929    0.9259    0.9091        54
+            spetoria     0.9535    1.0000    0.9762        41
+            tan_spot     0.6279    0.7297    0.6750        37
+         yellow_rust     1.0000    1.0000    1.0000        47
+
+            accuracy                         0.9130       563
+           macro avg     0.9086    0.9104    0.9082       563
+        weighted avg     0.9142    0.9130    0.9124       563
+
+✅ Executed.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎉 Execution finished. Check if training started above.
