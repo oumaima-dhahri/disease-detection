@@ -18,27 +18,3 @@ Epoch 17/20 | Train Loss: 0.0318 Acc: 0.9882 | Val Loss: 0.2648 Acc: 0.9235
 Epoch 18/20 | Train Loss: 0.0278 Acc: 0.9920 | Val Loss: 0.2651 Acc: 0.9235
 Epoch 19/20 | Train Loss: 0.0386 Acc: 0.9863 | Val Loss: 0.2654 Acc: 0.9235
 Early stopping triggered.
-Classification Report:
-                      precision    recall  f1-score   support
-
-               aphid     0.9512    0.8864    0.9176        44
-           army_worm     0.9767    0.9767    0.9767        43
-          black_rust     0.9524    0.8696    0.9091        46
-          brown_rust     0.9348    0.9773    0.9556        44
-         common_rust     0.9273    0.9623    0.9444        53
-fusarium_head_blight     0.9459    1.0000    0.9722        35
-             healthy     0.9718    0.9583    0.9650        72
-         leaf_blight     0.7692    0.6383    0.6977        47
- powdery_mildew_leaf     0.8929    0.9259    0.9091        54
-            spetoria     0.9535    1.0000    0.9762        41
-            tan_spot     0.6279    0.7297    0.6750        37
-         yellow_rust     1.0000    1.0000    1.0000        47
-
-            accuracy                         0.9130       563
-           macro avg     0.9086    0.9104    0.9082       563
-        weighted avg     0.9142    0.9130    0.9124       563
-
-✅ Executed.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🎉 Execution finished. Check if training started above.
