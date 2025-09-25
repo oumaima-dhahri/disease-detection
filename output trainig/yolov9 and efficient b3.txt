@@ -1,0 +1,266 @@
+Starting hybrid model training...
+Epoch 1/10, Batch 0/164, Loss: 2.4799, Acc: 25.00%
+Epoch 1/10, Batch 10/164, Loss: 2.4843, Acc: 14.20%
+Epoch 1/10, Batch 20/164, Loss: 2.4807, Acc: 13.69%
+Epoch 1/10, Batch 30/164, Loss: 2.4838, Acc: 12.10%
+Epoch 1/10, Batch 40/164, Loss: 2.4747, Acc: 12.80%
+Epoch 1/10, Batch 50/164, Loss: 2.4661, Acc: 14.22%
+Epoch 1/10, Batch 60/164, Loss: 2.4730, Acc: 15.06%
+Epoch 1/10, Batch 70/164, Loss: 2.4713, Acc: 15.85%
+Epoch 1/10, Batch 80/164, Loss: 2.4667, Acc: 15.43%
+Epoch 1/10, Batch 90/164, Loss: 2.4791, Acc: 15.93%
+Epoch 1/10, Batch 100/164, Loss: 2.4259, Acc: 16.96%
+Epoch 1/10, Batch 110/164, Loss: 2.4236, Acc: 17.17%
+Epoch 1/10, Batch 120/164, Loss: 2.4255, Acc: 17.46%
+Epoch 1/10, Batch 130/164, Loss: 2.3289, Acc: 18.37%
+Epoch 1/10, Batch 140/164, Loss: 2.2532, Acc: 19.46%
+Epoch 1/10, Batch 150/164, Loss: 2.0224, Acc: 20.61%
+Epoch 1/10, Batch 160/164, Loss: 1.9697, Acc: 21.04%
+Epoch 1/10:
+  Train Loss: 2.3906, Train Acc: 21.21%
+  Val Loss: 2.0149, Val Acc: 37.54%
+  New best validation accuracy: 37.54%
+Epoch 2/10, Batch 0/164, Loss: 1.9102, Acc: 37.50%
+Epoch 2/10, Batch 10/164, Loss: 1.7896, Acc: 28.98%
+Epoch 2/10, Batch 20/164, Loss: 2.3518, Acc: 29.46%
+Epoch 2/10, Batch 30/164, Loss: 2.0258, Acc: 31.25%
+Epoch 2/10, Batch 40/164, Loss: 1.9682, Acc: 30.79%
+Epoch 2/10, Batch 50/164, Loss: 2.3541, Acc: 30.51%
+Epoch 2/10, Batch 60/164, Loss: 2.0218, Acc: 30.43%
+Epoch 2/10, Batch 70/164, Loss: 1.7829, Acc: 31.69%
+Epoch 2/10, Batch 80/164, Loss: 2.4148, Acc: 32.10%
+Epoch 2/10, Batch 90/164, Loss: 1.7256, Acc: 32.62%
+Epoch 2/10, Batch 100/164, Loss: 1.8271, Acc: 32.74%
+Epoch 2/10, Batch 110/164, Loss: 1.7516, Acc: 33.05%
+Epoch 2/10, Batch 120/164, Loss: 1.5530, Acc: 33.21%
+Epoch 2/10, Batch 130/164, Loss: 2.1210, Acc: 33.44%
+Epoch 2/10, Batch 140/164, Loss: 1.6755, Acc: 33.78%
+Epoch 2/10, Batch 150/164, Loss: 1.4042, Acc: 34.23%
+Epoch 2/10, Batch 160/164, Loss: 1.7037, Acc: 34.47%
+Epoch 2/10:
+  Train Loss: 1.9279, Train Acc: 34.76%
+  Val Loss: 1.4833, Val Acc: 41.64%
+  New best validation accuracy: 41.64%
+Epoch 3/10, Batch 0/164, Loss: 1.5434, Acc: 43.75%
+Epoch 3/10, Batch 10/164, Loss: 1.5384, Acc: 41.48%
+Epoch 3/10, Batch 20/164, Loss: 1.6232, Acc: 41.67%
+Epoch 3/10, Batch 30/164, Loss: 1.1474, Acc: 42.34%
+Epoch 3/10, Batch 40/164, Loss: 1.5356, Acc: 41.62%
+Epoch 3/10, Batch 50/164, Loss: 1.8695, Acc: 41.91%
+Epoch 3/10, Batch 60/164, Loss: 1.4294, Acc: 41.19%
+Epoch 3/10, Batch 70/164, Loss: 1.7383, Acc: 42.25%
+Epoch 3/10, Batch 80/164, Loss: 1.4206, Acc: 42.13%
+Epoch 3/10, Batch 90/164, Loss: 1.2887, Acc: 42.72%
+Epoch 3/10, Batch 100/164, Loss: 1.8960, Acc: 43.38%
+Epoch 3/10, Batch 110/164, Loss: 1.7023, Acc: 43.07%
+Epoch 3/10, Batch 120/164, Loss: 1.5030, Acc: 44.37%
+Epoch 3/10, Batch 130/164, Loss: 1.5246, Acc: 45.04%
+Epoch 3/10, Batch 140/164, Loss: 1.1129, Acc: 45.66%
+Epoch 3/10, Batch 150/164, Loss: 1.2652, Acc: 46.32%
+Epoch 3/10, Batch 160/164, Loss: 1.6674, Acc: 46.82%
+Epoch 3/10:
+  Train Loss: 1.4746, Train Acc: 47.08%
+  Val Loss: 1.0950, Val Acc: 56.76%
+  New best validation accuracy: 56.76%
+Epoch 4/10, Batch 0/164, Loss: 1.3746, Acc: 50.00%
+Epoch 4/10, Batch 10/164, Loss: 1.5356, Acc: 58.52%
+Epoch 4/10, Batch 20/164, Loss: 1.0598, Acc: 59.23%
+Epoch 4/10, Batch 30/164, Loss: 1.0098, Acc: 57.06%
+Epoch 4/10, Batch 40/164, Loss: 0.7348, Acc: 57.47%
+Epoch 4/10, Batch 50/164, Loss: 1.4070, Acc: 57.11%
+Epoch 4/10, Batch 60/164, Loss: 1.5364, Acc: 57.27%
+Epoch 4/10, Batch 70/164, Loss: 1.4646, Acc: 58.10%
+Epoch 4/10, Batch 80/164, Loss: 1.1841, Acc: 58.18%
+Epoch 4/10, Batch 90/164, Loss: 1.5029, Acc: 58.86%
+Epoch 4/10, Batch 100/164, Loss: 1.3367, Acc: 58.54%
+Epoch 4/10, Batch 110/164, Loss: 1.0944, Acc: 59.01%
+Epoch 4/10, Batch 120/164, Loss: 0.8608, Acc: 59.50%
+Epoch 4/10, Batch 130/164, Loss: 1.0332, Acc: 59.92%
+Epoch 4/10, Batch 140/164, Loss: 0.8354, Acc: 59.93%
+Epoch 4/10, Batch 150/164, Loss: 0.8619, Acc: 59.81%
+Epoch 4/10, Batch 160/164, Loss: 1.1090, Acc: 60.02%
+Epoch 4/10:
+  Train Loss: 1.1561, Train Acc: 60.21%
+  Val Loss: 0.8409, Val Acc: 71.17%
+  New best validation accuracy: 71.17%
+Epoch 5/10, Batch 0/164, Loss: 1.0436, Acc: 68.75%
+Epoch 5/10, Batch 10/164, Loss: 0.9442, Acc: 67.05%
+Epoch 5/10, Batch 20/164, Loss: 0.9556, Acc: 68.75%
+Epoch 5/10, Batch 30/164, Loss: 0.8881, Acc: 66.94%
+Epoch 5/10, Batch 40/164, Loss: 0.8888, Acc: 67.38%
+Epoch 5/10, Batch 50/164, Loss: 1.5832, Acc: 67.03%
+Epoch 5/10, Batch 60/164, Loss: 1.3144, Acc: 67.21%
+Epoch 5/10, Batch 70/164, Loss: 0.9357, Acc: 67.69%
+Epoch 5/10, Batch 80/164, Loss: 0.7699, Acc: 68.52%
+Epoch 5/10, Batch 90/164, Loss: 0.8791, Acc: 68.75%
+Epoch 5/10, Batch 100/164, Loss: 0.8182, Acc: 69.00%
+Epoch 5/10, Batch 110/164, Loss: 0.8306, Acc: 68.75%
+Epoch 5/10, Batch 120/164, Loss: 0.8092, Acc: 68.65%
+Epoch 5/10, Batch 130/164, Loss: 1.0247, Acc: 68.46%
+Epoch 5/10, Batch 140/164, Loss: 0.7840, Acc: 68.44%
+Epoch 5/10, Batch 150/164, Loss: 1.0394, Acc: 68.42%
+Epoch 5/10, Batch 160/164, Loss: 0.7838, Acc: 68.48%
+Epoch 5/10:
+  Train Loss: 0.9215, Train Acc: 68.60%
+  Val Loss: 0.6980, Val Acc: 76.16%
+  New best validation accuracy: 76.16%
+Epoch 6/10, Batch 0/164, Loss: 0.9689, Acc: 62.50%
+Epoch 6/10, Batch 10/164, Loss: 1.0492, Acc: 72.16%
+Epoch 6/10, Batch 20/164, Loss: 0.9607, Acc: 70.54%
+Epoch 6/10, Batch 30/164, Loss: 0.5391, Acc: 71.77%
+Epoch 6/10, Batch 40/164, Loss: 0.4268, Acc: 72.41%
+Epoch 6/10, Batch 50/164, Loss: 0.5027, Acc: 72.18%
+Epoch 6/10, Batch 60/164, Loss: 0.4120, Acc: 73.05%
+Epoch 6/10, Batch 70/164, Loss: 0.6657, Acc: 72.62%
+Epoch 6/10, Batch 80/164, Loss: 0.9054, Acc: 72.38%
+Epoch 6/10, Batch 90/164, Loss: 0.6217, Acc: 72.25%
+Epoch 6/10, Batch 100/164, Loss: 1.0638, Acc: 72.28%
+Epoch 6/10, Batch 110/164, Loss: 0.6475, Acc: 72.02%
+Epoch 6/10, Batch 120/164, Loss: 0.6906, Acc: 72.31%
+Epoch 6/10, Batch 130/164, Loss: 0.6161, Acc: 72.66%
+Epoch 6/10, Batch 140/164, Loss: 0.7195, Acc: 72.74%
+Epoch 6/10, Batch 150/164, Loss: 0.7839, Acc: 73.05%
+Epoch 6/10, Batch 160/164, Loss: 0.6464, Acc: 72.98%
+Epoch 6/10:
+  Train Loss: 0.8026, Train Acc: 72.83%
+  Val Loss: 0.5609, Val Acc: 81.14%
+  New best validation accuracy: 81.14%
+Epoch 7/10, Batch 0/164, Loss: 0.6567, Acc: 75.00%
+Epoch 7/10, Batch 10/164, Loss: 0.7481, Acc: 77.27%
+Epoch 7/10, Batch 20/164, Loss: 0.5230, Acc: 77.08%
+Epoch 7/10, Batch 30/164, Loss: 0.6921, Acc: 77.02%
+Epoch 7/10, Batch 40/164, Loss: 0.6654, Acc: 75.46%
+Epoch 7/10, Batch 50/164, Loss: 0.7680, Acc: 76.10%
+Epoch 7/10, Batch 60/164, Loss: 0.4068, Acc: 76.23%
+Epoch 7/10, Batch 70/164, Loss: 0.6975, Acc: 76.85%
+Epoch 7/10, Batch 80/164, Loss: 0.8065, Acc: 76.77%
+Epoch 7/10, Batch 90/164, Loss: 0.7747, Acc: 76.85%
+Epoch 7/10, Batch 100/164, Loss: 0.3481, Acc: 76.24%
+Epoch 7/10, Batch 110/164, Loss: 0.3756, Acc: 76.35%
+Epoch 7/10, Batch 120/164, Loss: 0.9623, Acc: 76.55%
+Epoch 7/10, Batch 130/164, Loss: 1.0735, Acc: 76.43%
+Epoch 7/10, Batch 140/164, Loss: 0.9415, Acc: 76.46%
+Epoch 7/10, Batch 150/164, Loss: 1.1140, Acc: 76.86%
+Epoch 7/10, Batch 160/164, Loss: 1.0984, Acc: 76.98%
+Epoch 7/10:
+  Train Loss: 0.6847, Train Acc: 77.07%
+  Val Loss: 0.4684, Val Acc: 83.10%
+  New best validation accuracy: 83.10%
+Epoch 8/10, Batch 0/164, Loss: 0.7300, Acc: 75.00%
+Epoch 8/10, Batch 10/164, Loss: 0.7233, Acc: 75.57%
+Epoch 8/10, Batch 20/164, Loss: 0.3080, Acc: 78.27%
+Epoch 8/10, Batch 30/164, Loss: 0.8562, Acc: 78.83%
+Epoch 8/10, Batch 40/164, Loss: 0.7958, Acc: 80.79%
+Epoch 8/10, Batch 50/164, Loss: 0.5663, Acc: 81.00%
+Epoch 8/10, Batch 60/164, Loss: 0.5026, Acc: 81.66%
+Epoch 8/10, Batch 70/164, Loss: 0.5988, Acc: 81.60%
+Epoch 8/10, Batch 80/164, Loss: 0.5347, Acc: 81.17%
+Epoch 8/10, Batch 90/164, Loss: 1.2679, Acc: 81.11%
+Epoch 8/10, Batch 100/164, Loss: 0.5824, Acc: 81.19%
+Epoch 8/10, Batch 110/164, Loss: 0.7109, Acc: 80.91%
+Epoch 8/10, Batch 120/164, Loss: 0.4161, Acc: 80.89%
+Epoch 8/10, Batch 130/164, Loss: 0.4198, Acc: 81.11%
+Epoch 8/10, Batch 140/164, Loss: 0.3453, Acc: 81.16%
+Epoch 8/10, Batch 150/164, Loss: 0.6431, Acc: 81.33%
+Epoch 8/10, Batch 160/164, Loss: 0.3819, Acc: 81.29%
+Epoch 8/10:
+  Train Loss: 0.5942, Train Acc: 81.34%
+  Val Loss: 0.4221, Val Acc: 85.23%
+  New best validation accuracy: 85.23%
+Epoch 9/10, Batch 0/164, Loss: 0.7814, Acc: 68.75%
+Epoch 9/10, Batch 10/164, Loss: 0.3997, Acc: 83.52%
+Epoch 9/10, Batch 20/164, Loss: 0.4005, Acc: 83.04%
+Epoch 9/10, Batch 30/164, Loss: 0.4556, Acc: 83.06%
+Epoch 9/10, Batch 40/164, Loss: 0.5126, Acc: 83.54%
+Epoch 9/10, Batch 50/164, Loss: 0.4196, Acc: 82.23%
+Epoch 9/10, Batch 60/164, Loss: 0.4092, Acc: 82.27%
+Epoch 9/10, Batch 70/164, Loss: 0.7446, Acc: 82.48%
+Epoch 9/10, Batch 80/164, Loss: 0.5632, Acc: 82.72%
+Epoch 9/10, Batch 90/164, Loss: 0.7617, Acc: 82.83%
+Epoch 9/10, Batch 100/164, Loss: 0.3767, Acc: 82.61%
+Epoch 9/10, Batch 110/164, Loss: 0.4974, Acc: 82.83%
+Epoch 9/10, Batch 120/164, Loss: 0.8038, Acc: 83.01%
+Epoch 9/10, Batch 130/164, Loss: 0.5504, Acc: 82.20%
+Epoch 9/10, Batch 140/164, Loss: 0.4786, Acc: 82.18%
+Epoch 9/10, Batch 150/164, Loss: 0.5375, Acc: 82.16%
+Epoch 9/10, Batch 160/164, Loss: 0.5320, Acc: 82.26%
+Epoch 9/10:
+  Train Loss: 0.5209, Train Acc: 82.30%
+  Val Loss: 0.4135, Val Acc: 85.41%
+  New best validation accuracy: 85.41%
+Epoch 10/10, Batch 0/164, Loss: 0.4458, Acc: 87.50%
+Epoch 10/10, Batch 10/164, Loss: 0.5067, Acc: 83.52%
+Epoch 10/10, Batch 20/164, Loss: 0.5331, Acc: 83.04%
+Epoch 10/10, Batch 30/164, Loss: 0.8355, Acc: 82.86%
+Epoch 10/10, Batch 40/164, Loss: 0.3017, Acc: 83.99%
+Epoch 10/10, Batch 50/164, Loss: 0.8010, Acc: 84.19%
+Epoch 10/10, Batch 60/164, Loss: 0.7117, Acc: 84.84%
+Epoch 10/10, Batch 70/164, Loss: 0.7630, Acc: 84.86%
+Epoch 10/10, Batch 80/164, Loss: 0.4333, Acc: 84.10%
+Epoch 10/10, Batch 90/164, Loss: 0.2106, Acc: 84.27%
+Epoch 10/10, Batch 100/164, Loss: 0.3246, Acc: 84.28%
+Epoch 10/10, Batch 110/164, Loss: 0.3097, Acc: 84.35%
+Epoch 10/10, Batch 120/164, Loss: 0.5918, Acc: 84.30%
+Epoch 10/10, Batch 130/164, Loss: 1.0299, Acc: 84.16%
+Epoch 10/10, Batch 140/164, Loss: 0.5260, Acc: 84.40%
+Epoch 10/10, Batch 150/164, Loss: 0.6605, Acc: 84.60%
+Epoch 10/10, Batch 160/164, Loss: 0.4868, Acc: 84.90%
+Epoch 10/10:
+  Train Loss: 0.4821, Train Acc: 84.74%
+  Val Loss: 0.3834, Val Acc: 86.65%
+  New best validation accuracy: 86.65%
+Training completed in 30.0 minutes
+Training complete. Evaluating on test set...
+Evaluating model on test set...
+Processing batch 1/36
+Evaluation completed. Collected 563 samples
+Data validation:
+  Labels shape: (563,), dtype: int64
+  Predictions shape: (563,), dtype: int64
+  Labels range: 0 to 11
+  Predictions range: 0 to 11
+Test Accuracy: 85.61%
+
+Classification Report:
+                      precision    recall  f1-score   support
+
+               aphid     0.9744    0.8636    0.9157        44
+           army_worm     0.9773    1.0000    0.9885        43
+          black_rust     0.7872    0.8043    0.7957        46
+          brown_rust     0.9535    0.9318    0.9425        44
+         common_rust     0.8519    0.8679    0.8598        53
+fusarium_head_blight     0.9189    0.9714    0.9444        35
+             healthy     0.9444    0.9444    0.9444        72
+         leaf_blight     0.5211    0.7872    0.6271        47
+ powdery_mildew_leaf     0.9184    0.8333    0.8738        54
+            spetoria     0.8889    0.9756    0.9302        41
+            tan_spot     0.4286    0.1622    0.2353        37
+         yellow_rust     0.9792    1.0000    0.9895        47
+
+            accuracy                         0.8561       563
+           macro avg     0.8453    0.8452    0.8373       563
+        weighted avg     0.8540    0.8561    0.8481       563
+
+Creating confusion matrix...
+Confusion matrix created successfully: (12, 12)
+Confusion matrix values:
+[[38  1  0  0  1  1  0  0  3  0  0  0]
+ [ 0 43  0  0  0  0  0  0  0  0  0  0]
+ [ 0  0 37  0  2  0  1  6  0  0  0  0]
+ [ 0  0  1 41  1  0  0  1  0  0  0  0]
+ [ 1  0  1  0 46  0  0  1  0  0  4  0]
+ [ 0  0  0  0  0 34  0  0  0  0  1  0]
+ [ 0  0  0  0  0  1 68  1  0  1  1  0]
+ [ 0  0  5  0  1  1  0 37  0  1  2  0]
+ [ 0  0  1  2  0  0  1  4 45  1  0  0]
+ [ 0  0  0  0  0  0  0  0  0 40  0  1]
+ [ 0  0  2  0  3  0  2 21  1  2  6  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0 47]]
+Creating confusion matrix plot...
+Confusion matrix saved to: ../saved_models_and_data/hybrid_model_confusion_matrix.png
+Confusion matrix created successfully
+Final model saved to ../saved_models_and_data/hybrid_yolov9_efficientnet_model.pth
+Training log saved.
+Hybrid model training completed successfully!
+============================================================
+✅ YOLO training completed successfully!
