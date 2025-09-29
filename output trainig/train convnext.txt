@@ -1,0 +1,47 @@
+Starting training...
+Epoch 1/20 | Train Loss: 1.6102 Acc: 0.5074 | Val Loss: 0.6517 Acc: 0.7900
+Epoch 2/20 | Train Loss: 0.6029 Acc: 0.8115 | Val Loss: 0.4558 Acc: 0.8345
+Epoch 3/20 | Train Loss: 0.4480 Acc: 0.8592 | Val Loss: 0.3596 Acc: 0.8648
+Epoch 4/20 | Train Loss: 0.3283 Acc: 0.9042 | Val Loss: 0.3875 Acc: 0.8648
+Epoch 5/20 | Train Loss: 0.3166 Acc: 0.9019 | Val Loss: 0.3481 Acc: 0.8737
+Epoch 6/20 | Train Loss: 0.2785 Acc: 0.9100 | Val Loss: 0.3150 Acc: 0.9021
+Epoch 7/20 | Train Loss: 0.1937 Acc: 0.9466 | Val Loss: 0.3117 Acc: 0.8826
+Epoch 8/20 | Train Loss: 0.1663 Acc: 0.9462 | Val Loss: 0.4650 Acc: 0.8719
+Epoch 9/20 | Train Loss: 0.1645 Acc: 0.9496 | Val Loss: 0.3354 Acc: 0.8861
+Epoch 10/20 | Train Loss: 0.1414 Acc: 0.9565 | Val Loss: 0.2892 Acc: 0.9146
+Epoch 11/20 | Train Loss: 0.1282 Acc: 0.9622 | Val Loss: 0.3226 Acc: 0.9004
+Epoch 12/20 | Train Loss: 0.1238 Acc: 0.9599 | Val Loss: 0.3828 Acc: 0.8897
+Epoch 13/20 | Train Loss: 0.1040 Acc: 0.9649 | Val Loss: 0.3978 Acc: 0.8843
+Epoch 14/20 | Train Loss: 0.0816 Acc: 0.9783 | Val Loss: 0.3084 Acc: 0.9021
+Epoch 15/20 | Train Loss: 0.0718 Acc: 0.9775 | Val Loss: 0.3175 Acc: 0.9004
+Early stopping triggered.
+Training complete.
+Final model saved to ../saved_models_and_data/final_convnext_model.pth
+Starting evaluation...
+Test set predictions complete. Generating confusion matrix...
+Confusion matrix saved to ../saved_models_and_data/convnext_confusion_matrix.png
+
+Classification Report:
+                      precision    recall  f1-score   support
+
+               aphid     0.9302    0.9091    0.9195        44
+           army_worm     1.0000    0.9767    0.9882        43
+          black_rust     0.9130    0.9130    0.9130        46
+          brown_rust     0.9348    0.9773    0.9556        44
+         common_rust     0.9811    0.9811    0.9811        53
+fusarium_head_blight     0.9722    1.0000    0.9859        35
+             healthy     0.9459    0.9722    0.9589        72
+         leaf_blight     0.7209    0.6596    0.6889        47
+ powdery_mildew_leaf     0.9074    0.9074    0.9074        54
+            spetoria     0.9318    1.0000    0.9647        41
+            tan_spot     0.6571    0.6216    0.6389        37
+         yellow_rust     1.0000    1.0000    1.0000        47
+
+            accuracy                         0.9147       563
+           macro avg     0.9079    0.9098    0.9085       563
+        weighted avg     0.9123    0.9147    0.9132       563
+
+Training and evaluation complete!
+
+🎉 Script finished! All training logs should be shown above
+
