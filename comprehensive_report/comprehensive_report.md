@@ -17,7 +17,7 @@ analyzing their performance across multiple dimensions including accuracy, effic
 | Hybrid CNN-ViT | 88.45 | 88.35 | 4.2 | 45.8 | 6.1 |
 | Hybrid V2 | 87.21 | 87.22 | 3.8 | 38.9 | 5.3 |
 | YOLOv9+EfficientNet | 86.86 | 86.23 | 5.5 | 52.3 | 7.2 |
-| ProtoPNet | 56.13 | 53.55 | 2.1 | 15.2 | 2.8 |
+| ProtoPNet | 69.98 | 70.84 | 2.1 | 15.2 | 2.8 |
 
 
 ### Key Findings
@@ -34,14 +34,14 @@ analyzing their performance across multiple dimensions including accuracy, effic
 3. **SC-ConvNeXt** - 88.10% accuracy
 4. **Hybrid V2** - 87.21% accuracy
 5. **YOLOv9+EfficientNet** - 86.86% accuracy
-6. **ProtoPNet** - 56.13% accuracy
+6. **ProtoPNet** - 69.98% accuracy
 
 ### Model Categories Analysis
 
 - **ConvNeXt Family**: Average accuracy of 89.25%
 - **Hybrid Models**: Average accuracy of 87.83%
 - **Detection Models**: Average accuracy of 86.86%
-- **Interpretable Models**: Average accuracy of 56.13%
+- **Interpretable Models**: Average accuracy of 69.98%
 
 ### Recommendations
 

@@ -1,20 +1,390 @@
-Epoch 1/20 | Train Loss: 1.0472 Acc: 0.6623 | Val Loss: 0.4712 Acc: 0.8381
-Epoch 2/20 | Train Loss: 0.4059 Acc: 0.8623 | Val Loss: 0.3103 Acc: 0.8915
-Epoch 3/20 | Train Loss: 0.3036 Acc: 0.9012 | Val Loss: 0.4062 Acc: 0.8808
-Epoch 4/20 | Train Loss: 0.2541 Acc: 0.9142 | Val Loss: 0.3721 Acc: 0.8861
-Epoch 5/20 | Train Loss: 0.2333 Acc: 0.9191 | Val Loss: 0.2979 Acc: 0.9021
-Epoch 6/20 | Train Loss: 0.2010 Acc: 0.9329 | Val Loss: 0.3133 Acc: 0.8950
-Epoch 7/20 | Train Loss: 0.1704 Acc: 0.9416 | Val Loss: 0.3236 Acc: 0.8879
-Epoch 8/20 | Train Loss: 0.1772 Acc: 0.9412 | Val Loss: 0.2529 Acc: 0.9039
-Epoch 9/20 | Train Loss: 0.1274 Acc: 0.9515 | Val Loss: 0.3066 Acc: 0.9110
-Epoch 10/20 | Train Loss: 0.1366 Acc: 0.9519 | Val Loss: 0.3089 Acc: 0.9110
-Epoch 11/20 | Train Loss: 0.1062 Acc: 0.9649 | Val Loss: 0.3173 Acc: 0.9235
-Epoch 12/20 | Train Loss: 0.0699 Acc: 0.9767 | Val Loss: 0.2792 Acc: 0.9235
-Epoch 13/20 | Train Loss: 0.0457 Acc: 0.9844 | Val Loss: 0.2652 Acc: 0.9235
-Epoch 14/20 | Train Loss: 0.0336 Acc: 0.9886 | Val Loss: 0.2572 Acc: 0.9288
-Epoch 15/20 | Train Loss: 0.0444 Acc: 0.9836 | Val Loss: 0.2600 Acc: 0.9270
-Epoch 16/20 | Train Loss: 0.0294 Acc: 0.9912 | Val Loss: 0.2622 Acc: 0.9253
-Epoch 17/20 | Train Loss: 0.0318 Acc: 0.9882 | Val Loss: 0.2648 Acc: 0.9235
-Epoch 18/20 | Train Loss: 0.0278 Acc: 0.9920 | Val Loss: 0.2651 Acc: 0.9235
-Epoch 19/20 | Train Loss: 0.0386 Acc: 0.9863 | Val Loss: 0.2654 Acc: 0.9235
+Model parameters: 32,557,208
+Starting training...
+Starting training...
+Epoch 1, Batch 0/164, Loss: 2.4810
+Epoch 1, Batch 10/164, Loss: 2.1954
+Epoch 1, Batch 20/164, Loss: 1.8334
+Epoch 1, Batch 30/164, Loss: 1.5520
+Epoch 1, Batch 40/164, Loss: 0.9281
+Epoch 1, Batch 50/164, Loss: 1.0066
+Epoch 1, Batch 60/164, Loss: 0.9661
+Epoch 1, Batch 70/164, Loss: 1.0000
+Epoch 1, Batch 80/164, Loss: 0.8560
+Epoch 1, Batch 90/164, Loss: 0.9805
+Epoch 1, Batch 100/164, Loss: 1.2067
+Epoch 1, Batch 110/164, Loss: 0.8572
+Epoch 1, Batch 120/164, Loss: 0.7295
+Epoch 1, Batch 130/164, Loss: 0.9330
+Epoch 1, Batch 140/164, Loss: 0.5864
+Epoch 1, Batch 150/164, Loss: 0.6585
+Epoch 1, Batch 160/164, Loss: 1.1349
+Epoch 1/20 | Train Loss: 1.1906 Acc: 0.6181 | Val Loss: 0.6911 Acc: 0.7705 | LR: 0.000100 | Time: 65.4s
+Epoch 2, Batch 0/164, Loss: 0.9251
+Epoch 2, Batch 10/164, Loss: 0.9060
+Epoch 2, Batch 20/164, Loss: 0.2269
+Epoch 2, Batch 30/164, Loss: 1.3174
+Epoch 2, Batch 40/164, Loss: 0.6193
+Epoch 2, Batch 50/164, Loss: 0.7365
+Epoch 2, Batch 60/164, Loss: 0.3482
+Epoch 2, Batch 70/164, Loss: 0.5174
+Epoch 2, Batch 80/164, Loss: 0.8340
+Epoch 2, Batch 90/164, Loss: 0.5783
+Epoch 2, Batch 100/164, Loss: 0.3061
+Epoch 2, Batch 110/164, Loss: 0.9351
+Epoch 2, Batch 120/164, Loss: 0.1820
+Epoch 2, Batch 130/164, Loss: 0.7095
+Epoch 2, Batch 140/164, Loss: 0.4931
+Epoch 2, Batch 150/164, Loss: 0.5350
+Epoch 2, Batch 160/164, Loss: 0.3835
+Epoch 2/20 | Train Loss: 0.6994 Acc: 0.7734 | Val Loss: 0.5024 Acc: 0.8345 | LR: 0.000100 | Time: 57.4s
+Epoch 3, Batch 0/164, Loss: 0.3772
+Epoch 3, Batch 10/164, Loss: 0.5783
+Epoch 3, Batch 20/164, Loss: 0.6799
+Epoch 3, Batch 30/164, Loss: 0.7449
+Epoch 3, Batch 40/164, Loss: 0.8916
+Epoch 3, Batch 50/164, Loss: 0.2632
+Epoch 3, Batch 60/164, Loss: 0.5283
+Epoch 3, Batch 70/164, Loss: 0.4692
+Epoch 3, Batch 80/164, Loss: 0.4240
+Epoch 3, Batch 90/164, Loss: 0.2537
+Epoch 3, Batch 100/164, Loss: 0.4643
+Epoch 3, Batch 110/164, Loss: 0.3029
+Epoch 3, Batch 120/164, Loss: 0.6106
+Epoch 3, Batch 130/164, Loss: 0.3788
+Epoch 3, Batch 140/164, Loss: 0.9434
+Epoch 3, Batch 150/164, Loss: 0.8711
+Epoch 3, Batch 160/164, Loss: 0.4179
+Epoch 3/20 | Train Loss: 0.5428 Acc: 0.8256 | Val Loss: 0.4935 Acc: 0.8434 | LR: 0.000100 | Time: 64.2s
+Epoch 4, Batch 0/164, Loss: 0.4096
+Epoch 4, Batch 10/164, Loss: 0.3859
+Epoch 4, Batch 20/164, Loss: 0.4662
+Epoch 4, Batch 30/164, Loss: 0.3735
+Epoch 4, Batch 40/164, Loss: 0.4325
+Epoch 4, Batch 50/164, Loss: 0.8084
+Epoch 4, Batch 60/164, Loss: 0.2390
+Epoch 4, Batch 70/164, Loss: 0.4212
+Epoch 4, Batch 80/164, Loss: 0.7859
+Epoch 4, Batch 90/164, Loss: 0.2818
+Epoch 4, Batch 100/164, Loss: 1.0132
+Epoch 4, Batch 110/164, Loss: 0.2977
+Epoch 4, Batch 120/164, Loss: 0.5953
+Epoch 4, Batch 130/164, Loss: 0.7881
+Epoch 4, Batch 140/164, Loss: 0.3937
+Epoch 4, Batch 150/164, Loss: 0.4846
+Epoch 4, Batch 160/164, Loss: 0.1984
+Epoch 4/20 | Train Loss: 0.4754 Acc: 0.8481 | Val Loss: 0.3790 Acc: 0.8630 | LR: 0.000100 | Time: 61.4s
+Epoch 5, Batch 0/164, Loss: 0.7216
+Epoch 5, Batch 10/164, Loss: 0.2147
+Epoch 5, Batch 20/164, Loss: 0.2387
+Epoch 5, Batch 30/164, Loss: 0.5433
+Epoch 5, Batch 40/164, Loss: 0.0971
+Epoch 5, Batch 50/164, Loss: 0.5589
+Epoch 5, Batch 60/164, Loss: 0.3327
+Epoch 5, Batch 70/164, Loss: 0.3843
+Epoch 5, Batch 80/164, Loss: 0.3940
+Epoch 5, Batch 90/164, Loss: 0.2024
+Epoch 5, Batch 100/164, Loss: 0.7821
+Epoch 5, Batch 110/164, Loss: 0.1889
+Epoch 5, Batch 120/164, Loss: 0.1512
+Epoch 5, Batch 130/164, Loss: 0.2690
+Epoch 5, Batch 140/164, Loss: 0.3623
+Epoch 5, Batch 150/164, Loss: 0.4362
+Epoch 5, Batch 160/164, Loss: 0.4596
+Epoch 5/20 | Train Loss: 0.4228 Acc: 0.8581 | Val Loss: 0.4017 Acc: 0.8719 | LR: 0.000100 | Time: 61.2s
+Epoch 6, Batch 0/164, Loss: 0.2690
+Epoch 6, Batch 10/164, Loss: 0.3210
+Epoch 6, Batch 20/164, Loss: 0.3894
+Epoch 6, Batch 30/164, Loss: 0.3604
+Epoch 6, Batch 40/164, Loss: 0.4465
+Epoch 6, Batch 50/164, Loss: 0.2738
+Epoch 6, Batch 60/164, Loss: 0.2739
+Epoch 6, Batch 70/164, Loss: 0.3245
+Epoch 6, Batch 80/164, Loss: 0.4778
+Epoch 6, Batch 90/164, Loss: 0.2924
+Epoch 6, Batch 100/164, Loss: 0.1470
+Epoch 6, Batch 110/164, Loss: 0.3376
+Epoch 6, Batch 120/164, Loss: 0.2705
+Epoch 6, Batch 130/164, Loss: 0.2229
+Epoch 6, Batch 140/164, Loss: 0.4053
+Epoch 6, Batch 150/164, Loss: 0.5964
+Epoch 6, Batch 160/164, Loss: 0.4350
+Epoch 6/20 | Train Loss: 0.3701 Acc: 0.8825 | Val Loss: 0.3238 Acc: 0.8968 | LR: 0.000100 | Time: 62.5s
+Epoch 7, Batch 0/164, Loss: 0.2380
+Epoch 7, Batch 10/164, Loss: 0.6272
+Epoch 7, Batch 20/164, Loss: 0.4212
+Epoch 7, Batch 30/164, Loss: 0.2157
+Epoch 7, Batch 40/164, Loss: 0.3547
+Epoch 7, Batch 50/164, Loss: 0.3521
+Epoch 7, Batch 60/164, Loss: 0.3691
+Epoch 7, Batch 70/164, Loss: 0.1491
+Epoch 7, Batch 80/164, Loss: 0.1838
+Epoch 7, Batch 90/164, Loss: 0.3281
+Epoch 7, Batch 100/164, Loss: 0.7982
+Epoch 7, Batch 110/164, Loss: 0.1288
+Epoch 7, Batch 120/164, Loss: 0.1469
+Epoch 7, Batch 130/164, Loss: 0.2650
+Epoch 7, Batch 140/164, Loss: 0.3705
+Epoch 7, Batch 150/164, Loss: 0.2598
+Epoch 7, Batch 160/164, Loss: 0.5597
+Epoch 7/20 | Train Loss: 0.3158 Acc: 0.8951 | Val Loss: 0.3568 Acc: 0.8808 | LR: 0.000100 | Time: 58.3s
+Epoch 8, Batch 0/164, Loss: 0.2150
+Epoch 8, Batch 10/164, Loss: 0.1446
+Epoch 8, Batch 20/164, Loss: 0.3531
+Epoch 8, Batch 30/164, Loss: 0.6194
+Epoch 8, Batch 40/164, Loss: 0.1008
+Epoch 8, Batch 50/164, Loss: 0.3507
+Epoch 8, Batch 60/164, Loss: 0.2173
+Epoch 8, Batch 70/164, Loss: 0.4852
+Epoch 8, Batch 80/164, Loss: 0.1243
+Epoch 8, Batch 90/164, Loss: 0.2243
+Epoch 8, Batch 100/164, Loss: 0.1098
+Epoch 8, Batch 110/164, Loss: 0.3930
+Epoch 8, Batch 120/164, Loss: 0.1854
+Epoch 8, Batch 130/164, Loss: 0.3932
+Epoch 8, Batch 140/164, Loss: 0.0258
+Epoch 8, Batch 150/164, Loss: 0.1553
+Epoch 8, Batch 160/164, Loss: 0.0449
+Epoch 8/20 | Train Loss: 0.2846 Acc: 0.9138 | Val Loss: 0.3288 Acc: 0.8915 | LR: 0.000100 | Time: 62.1s
+Epoch 9, Batch 0/164, Loss: 0.2897
+Epoch 9, Batch 10/164, Loss: 0.3356
+Epoch 9, Batch 20/164, Loss: 0.0574
+Epoch 9, Batch 30/164, Loss: 0.1769
+Epoch 9, Batch 40/164, Loss: 0.1281
+Epoch 9, Batch 50/164, Loss: 0.1971
+Epoch 9, Batch 60/164, Loss: 0.2115
+Epoch 9, Batch 70/164, Loss: 0.4165
+Epoch 9, Batch 80/164, Loss: 0.4055
+Epoch 9, Batch 90/164, Loss: 0.1207
+Epoch 9, Batch 100/164, Loss: 0.2914
+Epoch 9, Batch 110/164, Loss: 0.3835
+Epoch 9, Batch 120/164, Loss: 0.0877
+Epoch 9, Batch 130/164, Loss: 0.3819
+Epoch 9, Batch 140/164, Loss: 0.1371
+Epoch 9, Batch 150/164, Loss: 0.1262
+Epoch 9, Batch 160/164, Loss: 0.4163
+Epoch 9/20 | Train Loss: 0.2613 Acc: 0.9126 | Val Loss: 0.3670 Acc: 0.8754 | LR: 0.000050 | Time: 63.3s
+Epoch 10, Batch 0/164, Loss: 0.1806
+Epoch 10, Batch 10/164, Loss: 0.9052
+Epoch 10, Batch 20/164, Loss: 0.0892
+Epoch 10, Batch 30/164, Loss: 0.5075
+Epoch 10, Batch 40/164, Loss: 0.1733
+Epoch 10, Batch 50/164, Loss: 0.1926
+Epoch 10, Batch 60/164, Loss: 0.5438
+Epoch 10, Batch 70/164, Loss: 0.2584
+Epoch 10, Batch 80/164, Loss: 0.4178
+Epoch 10, Batch 90/164, Loss: 0.1349
+Epoch 10, Batch 100/164, Loss: 0.0572
+Epoch 10, Batch 110/164, Loss: 0.1430
+Epoch 10, Batch 120/164, Loss: 0.4451
+Epoch 10, Batch 130/164, Loss: 0.3633
+Epoch 10, Batch 140/164, Loss: 0.1060
+Epoch 10, Batch 150/164, Loss: 0.3826
+Epoch 10, Batch 160/164, Loss: 0.0810
+Epoch 10/20 | Train Loss: 0.2103 Acc: 0.9351 | Val Loss: 0.3164 Acc: 0.8932 | LR: 0.000050 | Time: 60.3s
+Epoch 11, Batch 0/164, Loss: 0.0173
+Epoch 11, Batch 10/164, Loss: 0.1534
+Epoch 11, Batch 20/164, Loss: 0.0766
+Epoch 11, Batch 30/164, Loss: 0.1694
+Epoch 11, Batch 40/164, Loss: 0.1060
+Epoch 11, Batch 50/164, Loss: 0.0424
+Epoch 11, Batch 60/164, Loss: 0.1367
+Epoch 11, Batch 70/164, Loss: 0.0485
+Epoch 11, Batch 80/164, Loss: 0.4087
+Epoch 11, Batch 90/164, Loss: 0.5405
+Epoch 11, Batch 100/164, Loss: 0.0575
+Epoch 11, Batch 110/164, Loss: 0.1831
+Epoch 11, Batch 120/164, Loss: 0.1082
+Epoch 11, Batch 130/164, Loss: 0.0450
+Epoch 11, Batch 140/164, Loss: 0.0377
+Epoch 11, Batch 150/164, Loss: 0.0957
+Epoch 11, Batch 160/164, Loss: 0.2333
+Epoch 11/20 | Train Loss: 0.1769 Acc: 0.9435 | Val Loss: 0.3112 Acc: 0.9021 | LR: 0.000050 | Time: 60.4s
+Epoch 12, Batch 0/164, Loss: 0.3496
+Epoch 12, Batch 10/164, Loss: 0.0781
+Epoch 12, Batch 20/164, Loss: 0.1241
+Epoch 12, Batch 30/164, Loss: 0.0300
+Epoch 12, Batch 40/164, Loss: 0.0759
+Epoch 12, Batch 50/164, Loss: 0.0681
+Epoch 12, Batch 60/164, Loss: 0.1589
+Epoch 12, Batch 70/164, Loss: 0.0633
+Epoch 12, Batch 80/164, Loss: 0.1511
+Epoch 12, Batch 90/164, Loss: 0.2508
+Epoch 12, Batch 100/164, Loss: 0.0572
+Epoch 12, Batch 110/164, Loss: 0.1381
+Epoch 12, Batch 120/164, Loss: 0.0733
+Epoch 12, Batch 130/164, Loss: 0.0141
+Epoch 12, Batch 140/164, Loss: 0.0294
+Epoch 12, Batch 150/164, Loss: 0.2645
+Epoch 12, Batch 160/164, Loss: 0.1475
+Epoch 12/20 | Train Loss: 0.1546 Acc: 0.9485 | Val Loss: 0.3062 Acc: 0.9128 | LR: 0.000050 | Time: 62.8s
+Epoch 13, Batch 0/164, Loss: 0.0708
+Epoch 13, Batch 10/164, Loss: 0.0630
+Epoch 13, Batch 20/164, Loss: 0.2948
+Epoch 13, Batch 30/164, Loss: 0.1353
+Epoch 13, Batch 40/164, Loss: 0.0373
+Epoch 13, Batch 50/164, Loss: 0.0567
+Epoch 13, Batch 60/164, Loss: 0.2801
+Epoch 13, Batch 70/164, Loss: 0.5080
+Epoch 13, Batch 80/164, Loss: 0.1476
+Epoch 13, Batch 90/164, Loss: 0.0603
+Epoch 13, Batch 100/164, Loss: 0.1009
+Epoch 13, Batch 110/164, Loss: 0.1364
+Epoch 13, Batch 120/164, Loss: 0.0662
+Epoch 13, Batch 130/164, Loss: 0.2347
+Epoch 13, Batch 140/164, Loss: 0.2439
+Epoch 13, Batch 150/164, Loss: 0.0783
+Epoch 13, Batch 160/164, Loss: 0.0888
+Epoch 13/20 | Train Loss: 0.1314 Acc: 0.9596 | Val Loss: 0.3210 Acc: 0.9146 | LR: 0.000050 | Time: 61.2s
+Epoch 14, Batch 0/164, Loss: 0.0193
+Epoch 14, Batch 10/164, Loss: 0.0314
+Epoch 14, Batch 20/164, Loss: 0.0526
+Epoch 14, Batch 30/164, Loss: 0.0800
+Epoch 14, Batch 40/164, Loss: 0.0463
+Epoch 14, Batch 50/164, Loss: 0.1175
+Epoch 14, Batch 60/164, Loss: 0.0670
+Epoch 14, Batch 70/164, Loss: 0.0219
+Epoch 14, Batch 80/164, Loss: 0.0227
+Epoch 14, Batch 90/164, Loss: 0.0264
+Epoch 14, Batch 100/164, Loss: 0.0620
+Epoch 14, Batch 110/164, Loss: 0.4240
+Epoch 14, Batch 120/164, Loss: 0.0114
+Epoch 14, Batch 130/164, Loss: 0.0370
+Epoch 14, Batch 140/164, Loss: 0.0267
+Epoch 14, Batch 150/164, Loss: 0.0262
+Epoch 14, Batch 160/164, Loss: 0.1419
+Epoch 14/20 | Train Loss: 0.1370 Acc: 0.9557 | Val Loss: 0.3333 Acc: 0.9021 | LR: 0.000050 | Time: 61.4s
+Epoch 15, Batch 0/164, Loss: 0.2993
+Epoch 15, Batch 10/164, Loss: 0.0316
+Epoch 15, Batch 20/164, Loss: 0.1609
+Epoch 15, Batch 30/164, Loss: 0.0606
+Epoch 15, Batch 40/164, Loss: 0.2418
+Epoch 15, Batch 50/164, Loss: 0.1017
+Epoch 15, Batch 60/164, Loss: 0.2429
+Epoch 15, Batch 70/164, Loss: 0.2891
+Epoch 15, Batch 80/164, Loss: 0.0249
+Epoch 15, Batch 90/164, Loss: 0.0734
+Epoch 15, Batch 100/164, Loss: 0.1484
+Epoch 15, Batch 110/164, Loss: 0.0502
+Epoch 15, Batch 120/164, Loss: 0.1189
+Epoch 15, Batch 130/164, Loss: 0.2955
+Epoch 15, Batch 140/164, Loss: 0.1957
+Epoch 15, Batch 150/164, Loss: 0.0711
+Epoch 15, Batch 160/164, Loss: 0.1918
+Epoch 15/20 | Train Loss: 0.1426 Acc: 0.9489 | Val Loss: 0.2862 Acc: 0.9253 | LR: 0.000050 | Time: 59.1s
+Epoch 16, Batch 0/164, Loss: 0.0782
+Epoch 16, Batch 10/164, Loss: 0.0799
+Epoch 16, Batch 20/164, Loss: 0.0371
+Epoch 16, Batch 30/164, Loss: 0.0131
+Epoch 16, Batch 40/164, Loss: 0.0542
+Epoch 16, Batch 50/164, Loss: 0.1327
+Epoch 16, Batch 60/164, Loss: 0.1025
+Epoch 16, Batch 70/164, Loss: 0.1078
+Epoch 16, Batch 80/164, Loss: 0.0356
+Epoch 16, Batch 90/164, Loss: 0.1728
+Epoch 16, Batch 100/164, Loss: 0.4437
+Epoch 16, Batch 110/164, Loss: 0.2546
+Epoch 16, Batch 120/164, Loss: 0.1957
+Epoch 16, Batch 130/164, Loss: 0.1155
+Epoch 16, Batch 140/164, Loss: 0.2518
+Epoch 16, Batch 150/164, Loss: 0.0628
+Epoch 16, Batch 160/164, Loss: 0.4139
+Epoch 16/20 | Train Loss: 0.1184 Acc: 0.9641 | Val Loss: 0.3048 Acc: 0.9181 | LR: 0.000050 | Time: 58.9s
+Epoch 17, Batch 0/164, Loss: 0.0242
+Epoch 17, Batch 10/164, Loss: 0.0313
+Epoch 17, Batch 20/164, Loss: 0.1330
+Epoch 17, Batch 30/164, Loss: 0.0434
+Epoch 17, Batch 40/164, Loss: 0.2643
+Epoch 17, Batch 50/164, Loss: 0.1336
+Epoch 17, Batch 60/164, Loss: 0.1088
+Epoch 17, Batch 70/164, Loss: 0.3297
+Epoch 17, Batch 80/164, Loss: 0.4152
+Epoch 17, Batch 90/164, Loss: 0.0285
+Epoch 17, Batch 100/164, Loss: 0.0694
+Epoch 17, Batch 110/164, Loss: 0.1827
+Epoch 17, Batch 120/164, Loss: 0.6554
+Epoch 17, Batch 130/164, Loss: 0.0549
+Epoch 17, Batch 140/164, Loss: 0.1870
+Epoch 17, Batch 150/164, Loss: 0.0869
+Epoch 17, Batch 160/164, Loss: 0.0942
+Epoch 17/20 | Train Loss: 0.1195 Acc: 0.9622 | Val Loss: 0.3242 Acc: 0.9021 | LR: 0.000050 | Time: 61.1s
+Epoch 18, Batch 0/164, Loss: 0.0248
+Epoch 18, Batch 10/164, Loss: 0.0270
+Epoch 18, Batch 20/164, Loss: 0.0854
+Epoch 18, Batch 30/164, Loss: 0.0183
+Epoch 18, Batch 40/164, Loss: 0.1432
+Epoch 18, Batch 50/164, Loss: 0.0895
+Epoch 18, Batch 60/164, Loss: 0.1509
+Epoch 18, Batch 70/164, Loss: 0.0746
+Epoch 18, Batch 80/164, Loss: 0.0172
+Epoch 18, Batch 90/164, Loss: 0.4143
+Epoch 18, Batch 100/164, Loss: 0.0143
+Epoch 18, Batch 110/164, Loss: 0.2868
+Epoch 18, Batch 120/164, Loss: 0.0982
+Epoch 18, Batch 130/164, Loss: 0.2365
+Epoch 18, Batch 140/164, Loss: 0.2142
+Epoch 18, Batch 150/164, Loss: 0.1680
+Epoch 18, Batch 160/164, Loss: 0.0063
+Epoch 18/20 | Train Loss: 0.1096 Acc: 0.9687 | Val Loss: 0.3309 Acc: 0.9093 | LR: 0.000025 | Time: 59.6s
+Epoch 19, Batch 0/164, Loss: 0.0544
+Epoch 19, Batch 10/164, Loss: 0.0383
+Epoch 19, Batch 20/164, Loss: 0.0343
+Epoch 19, Batch 30/164, Loss: 0.0106
+Epoch 19, Batch 40/164, Loss: 0.1030
+Epoch 19, Batch 50/164, Loss: 0.2997
+Epoch 19, Batch 60/164, Loss: 0.0678
+Epoch 19, Batch 70/164, Loss: 0.0320
+Epoch 19, Batch 80/164, Loss: 0.0146
+Epoch 19, Batch 90/164, Loss: 0.0123
+Epoch 19, Batch 100/164, Loss: 0.1352
+Epoch 19, Batch 110/164, Loss: 0.2891
+Epoch 19, Batch 120/164, Loss: 0.1760
+Epoch 19, Batch 130/164, Loss: 0.0472
+Epoch 19, Batch 140/164, Loss: 0.0671
+Epoch 19, Batch 150/164, Loss: 0.0402
+Epoch 19, Batch 160/164, Loss: 0.1098
+Epoch 19/20 | Train Loss: 0.0852 Acc: 0.9741 | Val Loss: 0.3357 Acc: 0.9164 | LR: 0.000025 | Time: 58.9s
+Epoch 20, Batch 0/164, Loss: 0.1787
+Epoch 20, Batch 10/164, Loss: 0.0725
+Epoch 20, Batch 20/164, Loss: 0.0329
+Epoch 20, Batch 30/164, Loss: 0.0091
+Epoch 20, Batch 40/164, Loss: 0.0178
+Epoch 20, Batch 50/164, Loss: 0.0064
+Epoch 20, Batch 60/164, Loss: 0.0234
+Epoch 20, Batch 70/164, Loss: 0.0075
+Epoch 20, Batch 80/164, Loss: 0.0761
+Epoch 20, Batch 90/164, Loss: 0.0143
+Epoch 20, Batch 100/164, Loss: 0.1555
+Epoch 20, Batch 110/164, Loss: 0.0514
+Epoch 20, Batch 120/164, Loss: 0.0908
+Epoch 20, Batch 130/164, Loss: 0.1210
+Epoch 20, Batch 140/164, Loss: 0.0419
+Epoch 20, Batch 150/164, Loss: 0.2017
+Epoch 20, Batch 160/164, Loss: 0.0249
+Epoch 20/20 | Train Loss: 0.0921 Acc: 0.9706 | Val Loss: 0.3030 Acc: 0.9164 | LR: 0.000025 | Time: 58.2s
 Early stopping triggered.
+Training completed.
+Training complete. Evaluating on test set...
+Test set predictions complete. Generating confusion matrix...
+Classification Report:
+                      precision    recall  f1-score   support
+
+               aphid     0.9750    0.8864    0.9286        44
+           army_worm     0.9545    0.9767    0.9655        43
+          black_rust     0.8478    0.8478    0.8478        46
+          brown_rust     0.9535    0.9318    0.9425        44
+         common_rust     0.8814    0.9811    0.9286        53
+fusarium_head_blight     0.9189    0.9714    0.9444        35
+             healthy     0.9315    0.9444    0.9379        72
+         leaf_blight     0.7647    0.5532    0.6420        47
+ powdery_mildew_leaf     0.9423    0.9074    0.9245        54
+            spetoria     0.9302    0.9756    0.9524        41
+            tan_spot     0.6222    0.7568    0.6829        37
+         yellow_rust     1.0000    1.0000    1.0000        47
+
+            accuracy                         0.8970       563
+           macro avg     0.8935    0.8944    0.8914       563
+        weighted avg     0.8985    0.8970    0.8953       563
+
+Model saved to ../saved_models_and_data/wheat_disease_hybrid_model.pth
+Training log saved.
+🎉 Training completed successfully!

@@ -37,7 +37,7 @@ All visualizations are available in both:
 3. **Hybrid CNN-ViT** - 88.45% accuracy
 4. **Hybrid V2** - 87.21% accuracy
 5. **YOLOv9+EfficientNet** - 86.86% accuracy
-6. **ProtoPNet** - 56.13% accuracy (Most interpretable)
+6. **ProtoPNet** - 69.98% accuracy (Most interpretable)
 
 ## 📈 Key Findings
 
