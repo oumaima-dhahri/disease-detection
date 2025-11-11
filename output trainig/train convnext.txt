@@ -1,60 +1,47 @@
-Setting up image transformations for training and testing...
-Image transformations are ready.
-Defining custom dataset class for wheat disease images...
-Custom dataset class defined.
-Preparing data loaders and splitting dataset if needed...
-CUDA device count: 2
-Current CUDA device: 0
-CUDA device name: Tesla T4
-Loading data...
-Found existing split dataset. Loading splits...
-Calculating class weights for balanced sampling...
-Data loaders are ready.
-Data loaded. Classes: ['aphid', 'army_worm', 'black_rust', 'brown_rust', 'common_rust', 'fusarium_head_blight', 'healthy', 'leaf_blight', 'powdery_mildew_leaf', 'spetoria', 'tan_spot', 'yellow_rust']
-Initializing model...
-Using device: cuda
-Model initialized. Starting training...
-/tmp/ipykernel_36/606614384.py:43: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
-  scaler = torch.cuda.amp.GradScaler(enabled=USE_MIXED_PRECISION)
-/tmp/ipykernel_36/606614384.py:54: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
-  with torch.cuda.amp.autocast(enabled=USE_MIXED_PRECISION):
-/tmp/ipykernel_36/606614384.py:73: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
-  with torch.cuda.amp.autocast(enabled=USE_MIXED_PRECISION):
-Epoch 1/10 | Train Loss: 1.2953 Acc: 0.6349 | Val Loss: 0.5372 Acc: 0.8541 | LR: 0.000100 | Time: 65.2s
-Epoch 2/10 | Train Loss: 0.4371 Acc: 0.8684 | Val Loss: 0.3226 Acc: 0.8950 | LR: 0.000100 | Time: 56.9s
-Epoch 3/10 | Train Loss: 0.3132 Acc: 0.9077 | Val Loss: 0.3040 Acc: 0.8986 | LR: 0.000100 | Time: 55.6s
-Epoch 4/10 | Train Loss: 0.2482 Acc: 0.9180 | Val Loss: 0.2810 Acc: 0.9146 | LR: 0.000100 | Time: 58.0s
-Epoch 5/10 | Train Loss: 0.1959 Acc: 0.9355 | Val Loss: 0.2871 Acc: 0.9075 | LR: 0.000100 | Time: 57.3s
-Epoch 6/10 | Train Loss: 0.1649 Acc: 0.9466 | Val Loss: 0.2947 Acc: 0.9181 | LR: 0.000100 | Time: 57.5s
-Epoch 7/10 | Train Loss: 0.1391 Acc: 0.9565 | Val Loss: 0.2584 Acc: 0.9164 | LR: 0.000100 | Time: 56.2s
-Epoch 8/10 | Train Loss: 0.1155 Acc: 0.9660 | Val Loss: 0.2921 Acc: 0.9021 | LR: 0.000100 | Time: 56.2s
-Epoch 9/10 | Train Loss: 0.1052 Acc: 0.9702 | Val Loss: 0.2872 Acc: 0.9093 | LR: 0.000100 | Time: 56.6s
-Epoch 10/10 | Train Loss: 0.1049 Acc: 0.9676 | Val Loss: 0.2567 Acc: 0.9110 | LR: 0.000100 | Time: 59.7s
-Entraînement terminé.
-Training complete. Evaluating on test set...
+Starting training...
+Epoch 1/20 | Train Loss: 1.6102 Acc: 0.5074 | Val Loss: 0.6517 Acc: 0.7900
+Epoch 2/20 | Train Loss: 0.6029 Acc: 0.8115 | Val Loss: 0.4558 Acc: 0.8345
+Epoch 3/20 | Train Loss: 0.4480 Acc: 0.8592 | Val Loss: 0.3596 Acc: 0.8648
+Epoch 4/20 | Train Loss: 0.3283 Acc: 0.9042 | Val Loss: 0.3875 Acc: 0.8648
+Epoch 5/20 | Train Loss: 0.3166 Acc: 0.9019 | Val Loss: 0.3481 Acc: 0.8737
+Epoch 6/20 | Train Loss: 0.2785 Acc: 0.9100 | Val Loss: 0.3150 Acc: 0.9021
+Epoch 7/20 | Train Loss: 0.1937 Acc: 0.9466 | Val Loss: 0.3117 Acc: 0.8826
+Epoch 8/20 | Train Loss: 0.1663 Acc: 0.9462 | Val Loss: 0.4650 Acc: 0.8719
+Epoch 9/20 | Train Loss: 0.1645 Acc: 0.9496 | Val Loss: 0.3354 Acc: 0.8861
+Epoch 10/20 | Train Loss: 0.1414 Acc: 0.9565 | Val Loss: 0.2892 Acc: 0.9146
+Epoch 11/20 | Train Loss: 0.1282 Acc: 0.9622 | Val Loss: 0.3226 Acc: 0.9004
+Epoch 12/20 | Train Loss: 0.1238 Acc: 0.9599 | Val Loss: 0.3828 Acc: 0.8897
+Epoch 13/20 | Train Loss: 0.1040 Acc: 0.9649 | Val Loss: 0.3978 Acc: 0.8843
+Epoch 14/20 | Train Loss: 0.0816 Acc: 0.9783 | Val Loss: 0.3084 Acc: 0.9021
+Epoch 15/20 | Train Loss: 0.0718 Acc: 0.9775 | Val Loss: 0.3175 Acc: 0.9004
+Early stopping triggered.
+Training complete.
+Final model saved to ../saved_models_and_data/final_convnext_model.pth
+Starting evaluation...
 Test set predictions complete. Generating confusion matrix...
- 
+Confusion matrix saved to ../saved_models_and_data/convnext_confusion_matrix.png
 
-Rapport de classification:
+Classification Report:
                       precision    recall  f1-score   support
 
-               aphid     0.9286    0.8864    0.9070        44
-           army_worm     1.0000    0.9535    0.9762        43
-          black_rust     0.7843    0.8696    0.8247        46
-          brown_rust     0.9149    0.9773    0.9451        44
-         common_rust     0.8793    0.9623    0.9189        53
-fusarium_head_blight     1.0000    1.0000    1.0000        35
-             healthy     0.9600    1.0000    0.9796        72
-         leaf_blight     0.8621    0.5319    0.6579        47
- powdery_mildew_leaf     0.8929    0.9259    0.9091        54
-            spetoria     0.8913    1.0000    0.9425        41
-            tan_spot     0.6944    0.6757    0.6849        37
+               aphid     0.9302    0.9091    0.9195        44
+           army_worm     1.0000    0.9767    0.9882        43
+          black_rust     0.9130    0.9130    0.9130        46
+          brown_rust     0.9348    0.9773    0.9556        44
+         common_rust     0.9811    0.9811    0.9811        53
+fusarium_head_blight     0.9722    1.0000    0.9859        35
+             healthy     0.9459    0.9722    0.9589        72
+         leaf_blight     0.7209    0.6596    0.6889        47
+ powdery_mildew_leaf     0.9074    0.9074    0.9074        54
+            spetoria     0.9318    1.0000    0.9647        41
+            tan_spot     0.6571    0.6216    0.6389        37
          yellow_rust     1.0000    1.0000    1.0000        47
 
-            accuracy                         0.9041       563
-           macro avg     0.9006    0.8985    0.8955       563
-        weighted avg     0.9039    0.9041    0.8999       563
+            accuracy                         0.9147       563
+           macro avg     0.9079    0.9098    0.9085       563
+        weighted avg     0.9123    0.9147    0.9132       563
 
-Model saved to ../saved_models_and_data/wheat_disease_convnext_model.pth
-Done. Executed notebook saved as 'train_convnext_executed.ipynb'
+Training and evaluation complete!
+
+🎉 Script finished! All training logs should be shown above
 

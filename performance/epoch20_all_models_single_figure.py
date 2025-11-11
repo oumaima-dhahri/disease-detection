@@ -21,15 +21,15 @@ def extract_epoch_data_from_log(log_file_path):
         # Different patterns for different model formats
         patterns = [
             # SC-ConvNeXt pattern
-            r'Epoch (\d+)/10 \| Train Loss: ([\d.]+) Acc: ([\d.]+) \| Val Loss: ([\d.]+) Acc: ([\d.]+)',
+            r'Epoch (\d+)/20 \| Train Loss: ([\d.]+) Acc: ([\d.]+) \| Val Loss: ([\d.]+) Acc: ([\d.]+)',
             # ConvNeXt pattern
-            r'Epoch (\d+)/10 \| Train Loss: ([\d.]+) Acc: ([\d.]+) \| Val Loss: ([\d.]+) Acc: ([\d.]+)',
+            r'Epoch (\d+)/20 \| Train Loss: ([\d.]+) Acc: ([\d.]+) \| Val Loss: ([\d.]+) Acc: ([\d.]+)',
             # Hybrid CNN-ViT pattern
-            r'Epoch (\d+)/10 \| Train Loss: ([\d.]+) Acc: ([\d.]+) \| Val Loss: ([\d.]+) Acc: ([\d.]+)',
+            r'Epoch (\d+)/20 \| Train Loss: ([\d.]+) Acc: ([\d.]+) \| Val Loss: ([\d.]+) Acc: ([\d.]+)',
             # YOLOv9 + EfficientNet pattern
-            r'Epoch (\d+)/10:\s+Train Loss: ([\d.]+), Train Acc: ([\d.]+)%\s+Val Loss: ([\d.]+), Val Acc: ([\d.]+)%',
+            r'Epoch (\d+)/20:\s+Train Loss: ([\d.]+), Train Acc: ([\d.]+)%\s+Val Loss: ([\d.]+), Val Acc: ([\d.]+)%',
             # ProtoPNet pattern
-            r'Epoch (\d+)/10\s+Train Loss: ([\d.]+) Acc: ([\d.]+)\s+Val Loss: ([\d.]+) Acc: ([\d.]+)',
+            r'Epoch (\d+)/20\s+Train Loss: ([\d.]+) Acc: ([\d.]+)\s+Val Loss: ([\d.]+) Acc: ([\d.]+)',
         ]
         
         for pattern in patterns:
@@ -78,17 +78,17 @@ def extract_epoch_data_from_log(log_file_path):
         
     return epochs, train_losses, train_accs, val_losses, val_accs, test_accs
 
-def create_epoch10_all_models_single_figure():
-    """Create a single comprehensive figure with all models evaluation for epoch 10"""
+def create_epoch20_all_models_single_figure():
+    """Create a single comprehensive figure with all models evaluation"""
     
-    # Define model log files for epoch 10
+    # Define model log files
     model_logs = {
-        'SC-ConvNeXt': 'epoch10/output trainig/Train sc convnext.txt',
-        'ConvNeXt': 'epoch10/output trainig/train convnext.txt',
-        'Hybrid CNN-ViT': 'epoch10/output trainig/train hybrid cnn.txt',
-        'Hybrid V2': 'epoch10/output trainig/train hybrid v2.txt',
-        'YOLOv9 + EfficientNet': 'epoch10/output trainig/train yolo9 efficient net b3.txt',
-        'ProtoPNet': 'epoch10/output trainig/train protopnet.txt'
+        'SC-ConvNeXt': 'epoch20/output trainig/Train sc convnext.txt',
+        'ConvNeXt': 'epoch20/output trainig/train convnext.txt',
+        'Hybrid CNN-ViT': 'epoch20/output trainig/train hybrid cnn.txt',
+        'Hybrid V2': 'epoch20/output trainig/train hybrid v2.txt',
+        'YOLOv9 + EfficientNet': 'epoch20/output trainig/train yolo9 efficient net b3.txt',
+        'ProtoPNet': 'epoch20/output trainig/train protopnet.txt'
     }
     
     # Extract data for all models
@@ -123,9 +123,9 @@ def create_epoch10_all_models_single_figure():
         ax1.plot(data['epochs'], data['train_accs'], 
                 label=f"{model_name}\n(Final: {data['train_accs'][-1]:.3f})", 
                 color=colors[i], linewidth=2.5, 
-                linestyle=linestyles[i], marker=markers[i], markersize=4, markevery=1)
+                linestyle=linestyles[i], marker=markers[i], markersize=4, markevery=2)
     
-    ax1.set_title('Training Accuracy Over Epochs (Epoch 10)', fontsize=14, fontweight='bold', pad=15)
+    ax1.set_title('Training Accuracy Over Epochs', fontsize=14, fontweight='bold', pad=15)
     ax1.set_xlabel('Epoch', fontsize=12)
     ax1.set_ylabel('Training Accuracy', fontsize=12)
     ax1.legend(fontsize=9, loc='lower right')
@@ -138,9 +138,9 @@ def create_epoch10_all_models_single_figure():
         ax2.plot(data['epochs'], data['val_accs'], 
                 label=f"{model_name}\n(Final: {data['val_accs'][-1]:.3f})", 
                 color=colors[i], linewidth=2.5, 
-                linestyle=linestyles[i], marker=markers[i], markersize=4, markevery=1)
+                linestyle=linestyles[i], marker=markers[i], markersize=4, markevery=2)
     
-    ax2.set_title('Validation Accuracy Over Epochs (Epoch 10)', fontsize=14, fontweight='bold', pad=15)
+    ax2.set_title('Validation Accuracy Over Epochs', fontsize=14, fontweight='bold', pad=15)
     ax2.set_xlabel('Epoch', fontsize=12)
     ax2.set_ylabel('Validation Accuracy', fontsize=12)
     ax2.legend(fontsize=9, loc='lower right')
@@ -153,9 +153,9 @@ def create_epoch10_all_models_single_figure():
         ax3.plot(data['epochs'], data['train_losses'], 
                 label=f"{model_name}\n(Final: {data['train_losses'][-1]:.3f})", 
                 color=colors[i], linewidth=2.5, 
-                linestyle=linestyles[i], marker=markers[i], markersize=4, markevery=1)
+                linestyle=linestyles[i], marker=markers[i], markersize=4, markevery=2)
     
-    ax3.set_title('Training Loss Over Epochs (Epoch 10)', fontsize=14, fontweight='bold', pad=15)
+    ax3.set_title('Training Loss Over Epochs', fontsize=14, fontweight='bold', pad=15)
     ax3.set_xlabel('Epoch', fontsize=12)
     ax3.set_ylabel('Training Loss', fontsize=12)
     ax3.legend(fontsize=9, loc='upper right')
@@ -168,9 +168,9 @@ def create_epoch10_all_models_single_figure():
         ax4.plot(data['epochs'], data['val_losses'], 
                 label=f"{model_name}\n(Final: {data['val_losses'][-1]:.3f})", 
                 color=colors[i], linewidth=2.5, 
-                linestyle=linestyles[i], marker=markers[i], markersize=4, markevery=1)
+                linestyle=linestyles[i], marker=markers[i], markersize=4, markevery=2)
     
-    ax4.set_title('Validation Loss Over Epochs (Epoch 10)', fontsize=14, fontweight='bold', pad=15)
+    ax4.set_title('Validation Loss Over Epochs', fontsize=14, fontweight='bold', pad=15)
     ax4.set_xlabel('Epoch', fontsize=12)
     ax4.set_ylabel('Validation Loss', fontsize=12)
     ax4.legend(fontsize=9, loc='upper right')
@@ -191,7 +191,7 @@ def create_epoch10_all_models_single_figure():
     bars2 = ax5.bar(x, final_val_accs, width, label='Final Val', alpha=0.8, color='lightgreen')
     bars3 = ax5.bar(x + width, test_accs, width, label='Test', alpha=0.8, color='lightcoral')
     
-    ax5.set_title('Final Performance Comparison (Epoch 10)', fontsize=14, fontweight='bold', pad=15)
+    ax5.set_title('Final Performance Comparison', fontsize=14, fontweight='bold', pad=15)
     ax5.set_xlabel('Models', fontsize=12)
     ax5.set_ylabel('Accuracy', fontsize=12)
     ax5.set_xticks(x)
@@ -226,7 +226,7 @@ def create_epoch10_all_models_single_figure():
     sorted_epochs = [best_epochs[i] for i in sorted_indices]
     
     bars = ax6.barh(range(len(sorted_models)), sorted_accs, alpha=0.8, color=[colors[i] for i in sorted_indices])
-    ax6.set_title('Best Validation Accuracy Ranking (Epoch 10)', fontsize=14, fontweight='bold', pad=15)
+    ax6.set_title('Best Validation Accuracy Ranking', fontsize=14, fontweight='bold', pad=15)
     ax6.set_xlabel('Best Validation Accuracy', fontsize=12)
     ax6.set_ylabel('Models', fontsize=12)
     ax6.set_yticks(range(len(sorted_models)))
@@ -241,12 +241,12 @@ def create_epoch10_all_models_single_figure():
                 f'{width:.3f}\n(Epoch {epoch})', ha='left', va='center', fontsize=8)
     
     plt.tight_layout()
-    plt.savefig('epoch10_all_models_single_figure.png', dpi=300, bbox_inches='tight')
+    plt.savefig('epoch20_all_models_single_figure.png', dpi=300, bbox_inches='tight')
     plt.show()
     
     # Create summary table
     print("\n" + "="*120)
-    print("EPOCH 10 ALL MODELS EVALUATION SUMMARY")
+    print("EPOCH 20 ALL MODELS EVALUATION SUMMARY")
     print("="*120)
     
     summary_data = []
@@ -284,8 +284,8 @@ def create_epoch10_all_models_single_figure():
     return model_data
 
 if __name__ == "__main__":
-    print("Creating single figure with all models evaluation for epoch 10...")
-    model_data = create_epoch10_all_models_single_figure()
-    print("\nSingle figure with all models evaluation for epoch 10 generated successfully!")
-    print("Saved as: epoch10_all_models_single_figure.png")
+    print("Creating single figure with all models evaluation...")
+    model_data = create_epoch20_all_models_single_figure()
+    print("\nSingle figure with all models evaluation generated successfully!")
+    print("Saved as: epoch20_all_models_single_figure.png")
 
