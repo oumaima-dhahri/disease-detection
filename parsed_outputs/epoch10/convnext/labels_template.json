@@ -1,0 +1,23 @@
+{
+  "class_names": [
+    "aphid",
+    "army_worm",
+    "black_rust",
+    "brown_rust",
+    "common_rust",
+    "fusarium_head_blight",
+    "healthy",
+    "leaf_blight",
+    "powdery_mildew_leaf",
+    "spetoria",
+    "tan_spot",
+    "yellow_rust"
+  ],
+  "y_true": [],
+  "y_pred": []
+}
+
+
+
+
+

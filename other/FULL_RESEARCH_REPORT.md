@@ -419,34 +419,71 @@ Models were evaluated for:
 
 ## 7. Conclusion
 
-This comprehensive research provides a detailed comparison of six state-of-the-art deep learning architectures for wheat disease detection. Our key findings:
+This comprehensive research provides a detailed comparison of six state-of-the-art deep learning architectures for wheat disease detection, evaluating their performance, efficiency, and practical deployment considerations. Our experimental evaluation on a dataset of 12 wheat disease categories reveals critical insights into architectural trade-offs and deployment strategies.
 
-### 7.1 Key Contributions
+### 7.1 Key Findings
 
-1. **Performance Benchmarking:** Established clear performance rankings with ConvNeXt and SC-ConvNeXt achieving 91.47% accuracy
-2. **Efficiency Analysis:** Identified ConvNeXt as the most efficient model (32.7 efficiency score)
-3. **Architectural Insights:** Demonstrated the effectiveness of hybrid approaches combining CNNs and Vision Transformers
-4. **Practical Guidance:** Provided recommendations for different deployment scenarios
+The comparative analysis demonstrates that modernized CNN architectures, particularly ConvNeXt and SC-ConvNeXt, achieve the highest accuracy (91.47%) among all evaluated models, establishing them as strong baselines for wheat disease detection. Hybrid CNN–Transformer models, represented by Hybrid CNN-ViT, achieve competitive performance (90.94% accuracy) by combining local feature extraction with global context modeling, though at increased computational cost. The interpretable ProtoPNet architecture, while achieving lower accuracy (69.98%), provides crucial transparency for applications requiring regulatory compliance and agronomic trust.
 
 ### 7.2 Main Conclusions
 
-1. **Best Overall Accuracy:** ConvNeXt and SC-ConvNeXt (91.47% accuracy) - ideal for research and high-accuracy requirements
-2. **Best Accuracy-Efficiency Trade-off:** ConvNeXt (91.47% accuracy, 2.8h training) - recommended for production
-3. **Best Interpretability:** ProtoPNet - valuable for applications requiring explainable AI
-4. **Best Localization:** YOLOv9+EfficientNet-B3 - suitable for spatial mapping tasks
+**Performance Rankings:** ConvNeXt and SC-ConvNeXt emerge as the top performers, achieving 91.47% accuracy with favorable efficiency profiles. These modernized CNN architectures demonstrate that convolutional approaches, when properly modernized with transformer-inspired design principles, can compete effectively with transformer-based models while maintaining computational advantages.
+
+**Efficiency Analysis:** ConvNeXt provides the optimal balance between accuracy and efficiency, achieving 91.47% accuracy with 2.8 hours of training time and 28.6M parameters, making it well-suited for production deployment. Lightweight architectures like MobileNet variants offer real-time inference capabilities but with moderate accuracy trade-offs (82–88% accuracy).
+
+**Architectural Trade-offs:** The evaluation reveals clear trade-offs between accuracy, efficiency, and interpretability. Transformer-based and hybrid models achieve superior accuracy (90–95%) but require higher computational resources, while prototype-based models offer built-in interpretability at the cost of 15–25% lower accuracy.
+
+**Per-Class Performance:** Analysis of per-class metrics reveals significant variations, with some diseases (yellow rust, army worm) achieving near-perfect detection (100% F1-score) while others (tan spot, leaf blight) remain challenging (63–73% F1-score), highlighting the importance of comprehensive evaluation beyond overall accuracy.
 
 ### 7.3 Practical Recommendations
 
-- **For Production Deployment:** ConvNeXt offers the best balance of accuracy (91.47%), speed, and resource efficiency
-- **For Research Applications:** ConvNeXt or SC-ConvNeXt provide state-of-the-art performance (91.47% accuracy), or Hybrid CNN-ViT (90.94%) for architectural insights into CNN-ViT fusion
-- **For Interpretable Systems:** ProtoPNet enables explainable decision-making
-- **For Localization Tasks:** YOLOv9+EfficientNet-B3 provides spatial disease mapping
+**For Production Deployment:** ConvNeXt offers the best balance of accuracy (91.47%), training efficiency (2.8h), and model size (28.6M parameters), making it the recommended choice for real-world agricultural applications requiring reliable performance and efficient deployment.
+
+**For Research Applications:** SC-ConvNeXt and Hybrid CNN-ViT provide state-of-the-art performance (91.47% and 90.94% accuracy respectively) with architectural insights into attention mechanisms and hybrid CNN–Transformer fusion, valuable for advancing the field.
+
+**For Interpretable Systems:** ProtoPNet enables explainable decision-making through prototype-based learning, essential for applications requiring regulatory compliance, clinical validation, or agronomic trust, despite lower accuracy (69.98%).
+
+**For Localization Tasks:** YOLOv9+EfficientNet-B3 provides spatial disease mapping capabilities, enabling lesion localization and severity estimation for actionable scouting recommendations.
+
+### 7.4 Research Contributions
+
+This study contributes to the field by: (1) providing a comprehensive comparative analysis of six diverse architectures on a standardized wheat disease dataset, (2) establishing performance benchmarks and efficiency profiles for practical deployment guidance, (3) demonstrating the effectiveness of modernized CNN architectures in agricultural applications, and (4) highlighting critical trade-offs between accuracy, efficiency, and interpretability that inform model selection decisions.
 
 The results demonstrate that modern deep learning architectures can achieve high accuracy (>90%) for wheat disease detection, with clear trade-offs between accuracy, efficiency, and interpretability that can guide practitioners in model selection.
 
 ---
 
-## 8. References
+## 8. Perspectives and Future Work
+
+### 8.1 Current State and Limitations
+
+While this research demonstrates that deep learning architectures can achieve high accuracy (>90%) for wheat disease detection, several limitations must be acknowledged. The evaluation is based on a controlled dataset with 12 disease categories, and performance may vary under real field conditions with greater environmental variability, background clutter, and lighting variations. The models were trained and evaluated on static images, which do not capture temporal disease progression dynamics that are critical for early detection and severity assessment.
+
+### 8.2 Future Research Directions
+
+**Enhanced Generalization:** Future work should focus on improving model robustness to field conditions through stronger domain adaptation techniques, synthetic data generation using GANs, and multi-domain training that incorporates diverse environmental conditions, cultivars, and geographic regions. The performance gap between curated lab datasets (>95% accuracy) and real field conditions (85–95% accuracy) represents a critical challenge requiring attention.
+
+**Temporal and Multi-modal Approaches:** Incorporating temporal information through video sequences or time-series analysis could enable early disease detection before visible symptoms appear. Multi-modal fusion combining RGB imagery with hyperspectral, thermal, or multispectral data may capture physiological stress indicators earlier than visible lesions, enabling proactive disease management.
+
+**Few-Shot and Self-Supervised Learning:** Rare diseases and emergent pests require few-shot learning approaches to reduce annotation costs. Self-supervised and semi-supervised learning strategies that leverage unlabeled field images could significantly improve data efficiency and enable deployment in resource-constrained agricultural settings.
+
+**Unified Detection–Segmentation–Severity Frameworks:** Future architectures should integrate disease detection, lesion segmentation, and severity estimation into unified end-to-end frameworks, providing actionable outputs that directly support agronomic decision-making and treatment recommendations.
+
+**Explainability and Trust:** While post-hoc explainability methods (Grad-CAM, LIME) are standard, future work should explore inherently interpretable architectures that maintain competitive accuracy while providing built-in transparency. Human-in-the-loop approaches that incorporate agronomist feedback into model refinement cycles could improve real-world reliability and adoption.
+
+**Edge Deployment Optimization:** As agricultural applications increasingly require real-time inference on mobile devices and drones, future research should focus on model compression techniques (quantization, pruning, knowledge distillation) that maintain accuracy while enabling deployment on resource-constrained edge devices.
+
+### 8.3 Broader Impact and Applications
+
+The findings from this research extend beyond wheat disease detection to broader agricultural applications, including other crop diseases, pest detection, and plant health monitoring. The architectural insights and trade-off analyses provide guidance for practitioners working across diverse agricultural domains. As deep learning models become more deployment-ready, the focus shifts from achieving high accuracy on curated datasets to ensuring reliable, interpretable, and efficient performance in real agricultural settings, ultimately supporting sustainable crop management and global food security.
+
+### 8.4 Closing Remarks
+
+This comprehensive evaluation demonstrates that modern deep learning architectures can achieve high accuracy for wheat disease detection, with clear trade-offs between accuracy, efficiency, and interpretability that guide model selection. ConvNeXt and SC-ConvNeXt emerge as top performers, achieving 91.47% accuracy with favorable efficiency profiles, while hybrid CNN–Transformer models offer competitive performance through global context modeling. As the field advances toward unified frameworks combining detection, segmentation, and severity estimation, with multimodal sensing and few-shot learning representing promising directions, the focus remains on bridging the gap between high curated accuracy and reliable field performance, ultimately supporting agronomic decision-making and sustainable agriculture.
+
+---
+
+## 9. References
 
 Chen, C., et al. (2019). "This Looks Like That: Deep Learning for Interpretable Image Recognition." *Advances in Neural Information Processing Systems (NeurIPS)*, 32.
 
@@ -466,9 +503,9 @@ Woo, S., Park, J., Lee, J.-Y., & Kweon, I. S. (2018). "CBAM: Convolutional Block
 
 ---
 
-## 9. Appendices
+## 10. Appendices
 
-### 9.1 Detailed Performance Tables
+### 10.1 Detailed Performance Tables
 
 #### Per-Class F1-Scores (Top 3 Models)
 
@@ -487,7 +524,7 @@ Woo, S., Park, J., Lee, J.-Y., & Kweon, I. S. (2018). "CBAM: Convolutional Block
 | Leaf Blight              | 68.89    | 65.06       | 73.56          |
 | Tan Spot                 | 63.89    | 62.65       | 67.53          |
 
-### 9.2 Training Configuration Details
+### 10.2 Training Configuration Details
 
 #### Hyperparameters by Model
 

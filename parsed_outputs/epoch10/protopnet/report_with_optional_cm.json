@@ -1,0 +1,80 @@
+{
+  "model": "ProtoPNet",
+  "epoch": "epoch10",
+  "per_class": {
+    "aphid": {
+      "precision": 0.5758,
+      "recall": 0.4318,
+      "f1_score": 0.4935,
+      "support": 44
+    },
+    "army_worm": {
+      "precision": 0.9714,
+      "recall": 0.7907,
+      "f1_score": 0.8718,
+      "support": 43
+    },
+    "black_rust": {
+      "precision": 0.4103,
+      "recall": 0.6957,
+      "f1_score": 0.5161,
+      "support": 46
+    },
+    "brown_rust": {
+      "precision": 0.5147,
+      "recall": 0.7955,
+      "f1_score": 0.625,
+      "support": 44
+    },
+    "common_rust": {
+      "precision": 0.8,
+      "recall": 0.1509,
+      "f1_score": 0.254,
+      "support": 53
+    },
+    "fusarium_head_blight": {
+      "precision": 0.5,
+      "recall": 0.9429,
+      "f1_score": 0.6535,
+      "support": 35
+    },
+    "healthy": {
+      "precision": 0.8571,
+      "recall": 0.5,
+      "f1_score": 0.6316,
+      "support": 72
+    },
+    "leaf_blight": {
+      "precision": 0.413,
+      "recall": 0.4043,
+      "f1_score": 0.4086,
+      "support": 47
+    },
+    "powdery_mildew_leaf": {
+      "precision": 0.3333,
+      "recall": 0.5556,
+      "f1_score": 0.4167,
+      "support": 54
+    },
+    "spetoria": {
+      "precision": 0.587,
+      "recall": 0.6585,
+      "f1_score": 0.6207,
+      "support": 41
+    },
+    "tan_spot": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 37
+    },
+    "yellow_rust": {
+      "precision": 0.8776,
+      "recall": 0.9149,
+      "f1_score": 0.8958,
+      "support": 47
+    }
+  },
+  "overall": {},
+  "confusion_matrix": null
+}

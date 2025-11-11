@@ -751,6 +751,15 @@ This project presents a comprehensive benchmark of six state-of-our-art deep lea
 - **Image Formats**: PNG, JPG, JPG files
 - **Split Distribution**: Train (2,621), Validation (562), Test (563)
 
+### Dataset Split Distribution
+
+| Split | Percentage | Count | Purpose |
+|-------|-----------|-------|---------|
+| Training | 70% | 2,621 | Primary learning data |
+| Validation | 15% | 562 | Hyperparameter tuning |
+| Test | 15% | 563 | Final evaluation |
+| Total | 100% | 3,746 | Complete dataset |
+
 ### Disease Classes
 1. **Aphid** (295 images) - Pest infestation
 2. **Army Worm** (285 images) - Lepidopteran pest damage
@@ -764,6 +773,25 @@ This project presents a comprehensive benchmark of six state-of-our-art deep lea
 10. **Septoria** (300 images) - Septoria tritici infection
 11. **Tan Spot** (281 images) - Pyrenophora tritici-repentis infection
 12. **Yellow Rust** (300 images) - Puccinia striiformis infection
+
+### Dataset Sample Images
+
+The following sample images provide visual examples of selected disease classes from the dataset. These images represent the diversity of wheat health conditions, including fungal diseases (rust variants, powdery mildew, leaf blight, tan spot, fusarium head blight, septoria) and pest damage (aphid, army worm), as well as healthy wheat specimens. Each sample demonstrates the characteristic visual features that the deep learning models learn to distinguish during training.
+
+![Healthy Wheat Leaf](../test_images/lovepik-newborn-winter-wheat-picture_501700878.jpg)
+*Sample: Healthy wheat leaf*
+
+![Brown Rust](../test_images/brown-rust_wheat_375x225_halfwidth.webp)
+*Sample: Brown Rust disease*
+
+![Yellow Rust](../test_images/yellow_rust_close_375x225.webp)
+*Sample: Yellow Rust disease*
+
+![Fusarium Head Blight](../test_images/af_jun_p36-38_Fusarium_Ear_Blight_Main.jpg)
+*Sample: Fusarium Head Blight disease*
+
+![Aphid](../dataset/aphid/aphid_10.png)
+*Sample: Aphid pest infestation*
 
 ## 🏆 Model Performance Comparison by Training Duration
 
@@ -1106,7 +1134,7 @@ where: pt = p if y=1, else (1-p)
 ```
 disease-detection/
 ├── 📊 Dataset & Analysis
-│   ├── dataset/                    # Original dataset (3,746 images)
+│   ├── dataset/                    # Original dataset (3,498 images)
 │   ├── dataset_split/              # Train/val/test splits
 │   └── comprehensive_report/       # Performance analysis & charts
 │
@@ -1941,16 +1969,33 @@ The analysis reveals that ConvNeXt provides the best overall value proposition, 
 ## **CHAPTER 6: CONCLUSIONS AND FUTURE WORK**
 **Title**: *"Future Directions for Agricultural AI and Automated Disease Detection"*
 
-### **Structure:**
-```
-10.1 Summary of Key Findings                        [400 words]
-10.2 Research Contributions                          [300 words]
-10.3 Practical Implications                         [250 words]
-10.4 Limitations of the Study                      [200 words]
-10.5 Future Research Directions                     [400 words]
-10.6 Recommendations for Practitioners              [250 words]
-10.7 Concluding Remarks                             [100 words]
-```
+### **6.1 Summary of Key Findings**
+
+This comprehensive research provides a detailed comparison of six state-of-the-art deep learning architectures for wheat disease detection, evaluating their performance, efficiency, and practical deployment considerations. Our experimental evaluation on a dataset of 12 wheat disease categories reveals critical insights into architectural trade-offs and deployment strategies. The comparative analysis demonstrates that modernized CNN architectures, particularly ConvNeXt and SC-ConvNeXt, achieve the highest accuracy (91.47%) among all evaluated models, establishing them as strong baselines for wheat disease detection. Hybrid CNN–Transformer models, represented by Hybrid CNN-ViT, achieve competitive performance (90.94% accuracy) by combining local feature extraction with global context modeling, though at increased computational cost. The interpretable ProtoPNet architecture, while achieving lower accuracy (69.98%), provides crucial transparency for applications requiring regulatory compliance and agronomic trust. ConvNeXt and SC-ConvNeXt emerge as the top performers, achieving 91.47% accuracy with favorable efficiency profiles, demonstrating that convolutional approaches, when properly modernized with transformer-inspired design principles, can compete effectively with transformer-based models while maintaining computational advantages. ConvNeXt provides the optimal balance between accuracy and efficiency, achieving 91.47% accuracy with 2.8 hours of training time and 28.6M parameters, making it well-suited for production deployment. The evaluation reveals clear trade-offs between accuracy, efficiency, and interpretability: transformer-based and hybrid models achieve superior accuracy (90–95%) but require higher computational resources, while prototype-based models offer built-in interpretability at the cost of 15–25% lower accuracy. Analysis of per-class metrics reveals significant variations, with some diseases (yellow rust, army worm) achieving near-perfect detection (100% F1-score) while others (tan spot, leaf blight) remain challenging (63–73% F1-score), highlighting the importance of comprehensive evaluation beyond overall accuracy.
+
+### **6.2 Research Contributions**
+
+This study contributes to the field by providing a comprehensive comparative analysis of six diverse architectures on a standardized wheat disease dataset, establishing performance benchmarks and efficiency profiles for practical deployment guidance. The research demonstrates the effectiveness of modernized CNN architectures in agricultural applications, highlighting critical trade-offs between accuracy, efficiency, and interpretability that inform model selection decisions. The evaluation provides practical guidance for practitioners working across diverse agricultural domains, with architectural insights and trade-off analyses that extend beyond wheat disease detection to broader agricultural applications, including other crop diseases, pest detection, and plant health monitoring. The findings establish ConvNeXt as the recommended choice for production deployment, offering the best balance of accuracy (91.47%), training efficiency (2.8h), and model size (28.6M parameters), while SC-ConvNeXt and Hybrid CNN-ViT provide state-of-the-art performance (91.47% and 90.94% accuracy respectively) with architectural insights valuable for advancing the field. The research also demonstrates that ProtoPNet enables explainable decision-making through prototype-based learning, essential for applications requiring regulatory compliance, clinical validation, or agronomic trust, despite lower accuracy (69.98%).
+
+### **6.3 Practical Implications**
+
+The practical implications of this research extend to real-world agricultural applications where reliable disease detection is critical for crop management and economic outcomes. For production deployment, ConvNeXt offers the best balance of accuracy (91.47%), training efficiency (2.8h), and model size (28.6M parameters), making it the recommended choice for real-world agricultural applications requiring reliable performance and efficient deployment. For research applications, SC-ConvNeXt and Hybrid CNN-ViT provide state-of-the-art performance (91.47% and 90.94% accuracy respectively) with architectural insights into attention mechanisms and hybrid CNN–Transformer fusion, valuable for advancing the field. For interpretable systems, ProtoPNet enables explainable decision-making through prototype-based learning, essential for applications requiring regulatory compliance, clinical validation, or agronomic trust, despite lower accuracy (69.98%). For localization tasks, YOLOv9+EfficientNet-B3 provides spatial disease mapping capabilities, enabling lesion localization and severity estimation for actionable scouting recommendations. The findings demonstrate that modern deep learning architectures can achieve high accuracy (>90%) for wheat disease detection, with clear trade-offs between accuracy, efficiency, and interpretability that can guide practitioners in model selection for diverse agricultural applications.
+
+### **6.4 Limitations of the Study**
+
+While this research demonstrates that deep learning architectures can achieve high accuracy (>90%) for wheat disease detection, several limitations must be acknowledged. The evaluation is based on a controlled dataset with 12 disease categories, and performance may vary under real field conditions with greater environmental variability, background clutter, and lighting variations (Long et al., 2022; Kumar et al., 2023). The models were trained and evaluated on static images, which do not capture temporal disease progression dynamics that are critical for early detection and severity assessment. The dataset size, while sufficient for comparative analysis, is limited compared to large-scale agricultural datasets, and the evaluation may not fully capture the diversity of real-world agricultural conditions including different cultivars, geographic regions, and seasonal variations (Khan et al., 2024). The performance gap between curated lab datasets (>95% accuracy) and real field conditions (85–95% accuracy) represents a critical challenge that requires attention in future work (Long et al., 2022; Dong et al., 2024). Additionally, the evaluation focuses on classification accuracy but does not extensively explore lesion localization, severity estimation, or temporal disease progression, which are important for comprehensive agricultural decision support (Qian et al., 2024).
+
+### **6.5 Future Research Directions**
+
+Future work should focus on improving model robustness to field conditions through stronger domain adaptation techniques, synthetic data generation using GANs, and multi-domain training that incorporates diverse environmental conditions, cultivars, and geographic regions (Khan et al., 2024; Dong et al., 2024). Incorporating temporal information through video sequences or time-series analysis could enable early disease detection before visible symptoms appear, while multi-modal fusion combining RGB imagery with hyperspectral, thermal, or multispectral data may capture physiological stress indicators earlier than visible lesions, enabling proactive disease management. Rare diseases and emergent pests require few-shot learning approaches to reduce annotation costs, and self-supervised and semi-supervised learning strategies that leverage unlabeled field images could significantly improve data efficiency and enable deployment in resource-constrained agricultural settings (Khubaib et al., 2025). Future architectures should integrate disease detection, lesion segmentation, and severity estimation into unified end-to-end frameworks, providing actionable outputs that directly support agronomic decision-making and treatment recommendations (Qian et al., 2024; Roy et al., 2025). While post-hoc explainability methods (Grad-CAM, LIME) are standard (Sneha et al., 2023; Dutta et al., 2021), future work should explore inherently interpretable architectures that maintain competitive accuracy while providing built-in transparency (Chen et al., 2019; Li et al., 2021), and human-in-the-loop approaches that incorporate agronomist feedback into model refinement cycles could improve real-world reliability and adoption. As agricultural applications increasingly require real-time inference on mobile devices and drones, future research should focus on model compression techniques (quantization, pruning, knowledge distillation) that maintain accuracy while enabling deployment on resource-constrained edge devices (Qian et al., 2025; Khubaib et al., 2025).
+
+### **6.6 Recommendations for Practitioners**
+
+For practitioners implementing wheat disease detection systems, this research provides clear guidance on model selection based on deployment requirements. For production deployment requiring reliable performance and efficient resource utilization, ConvNeXt is recommended as it offers the best balance of accuracy (91.47%), training efficiency (2.8h), and model size (28.6M parameters). For research applications exploring architectural innovations, SC-ConvNeXt and Hybrid CNN-ViT provide state-of-the-art performance with insights into attention mechanisms and hybrid fusion strategies (Yang et al., 2023; Sneha et al., 2023). For applications requiring regulatory compliance or agronomic trust, ProtoPNet offers built-in interpretability through prototype-based learning, though at the cost of lower accuracy (69.98%) (Chen et al., 2019; Li et al., 2021). For tasks requiring lesion localization and severity estimation, YOLOv9+EfficientNet-B3 provides spatial disease mapping capabilities (Qian et al., 2024; Redmon et al., 2016). Practitioners should prioritize comprehensive evaluation metrics beyond overall accuracy, including per-class Precision/Recall/F1-scores, confusion matrices, and calibration metrics, as performance variations across disease classes can significantly impact real-world utility (Long et al., 2022; Dong et al., 2024). Additionally, practitioners should consider the performance gap between curated lab datasets and real field conditions, implementing strong augmentation strategies and domain adaptation techniques to improve field robustness (Khan et al., 2024; Long et al., 2022).
+
+### **6.7 Concluding Remarks**
+
+This comprehensive evaluation demonstrates that modern deep learning architectures can achieve high accuracy for wheat disease detection, with clear trade-offs between accuracy, efficiency, and interpretability that guide model selection. ConvNeXt and SC-ConvNeXt emerge as top performers, achieving 91.47% accuracy with favorable efficiency profiles, while hybrid CNN–Transformer models offer competitive performance through global context modeling. As the field advances toward unified frameworks combining detection, segmentation, and severity estimation, with multimodal sensing and few-shot learning representing promising directions, the focus remains on bridging the gap between high curated accuracy and reliable field performance, ultimately supporting agronomic decision-making and sustainable agriculture. The findings from this research extend beyond wheat disease detection to broader agricultural applications, providing architectural insights and trade-off analyses that guide practitioners working across diverse agricultural domains, ultimately supporting sustainable crop management and global food security.
 
 ---
 
