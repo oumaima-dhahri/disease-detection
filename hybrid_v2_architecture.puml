@@ -1,0 +1,140 @@
+@startuml Hybrid V2 Model Architecture
+
+!define RESNET_COLOR #E8F4F8
+!define EFFICIENTNET_COLOR #FFF4E6
+!define FUSION_COLOR #E8F5E9
+!define CLASSIFIER_COLOR #FCE4EC
+
+title Hybrid V2 Model Architecture\n(ResNet50 + EfficientNet-B0 Fusion)
+
+skinparam component {
+    BackgroundColor<<ResNet>> RESNET_COLOR
+    BackgroundColor<<EfficientNet>> EFFICIENTNET_COLOR
+    BackgroundColor<<Fusion>> FUSION_COLOR
+    BackgroundColor<<Classifier>> CLASSIFIER_COLOR
+    BorderColor #333333
+    ArrowColor #333333
+}
+
+package "Input Layer" {
+    component [Input Image\n224x224x3] as Input
+}
+
+package "ResNet50 Backbone" <<ResNet>> {
+    component [Conv1 + BN + ReLU] as ResNet_Conv1
+    component [MaxPool] as ResNet_Pool
+    component [Layer1\n(3 Bottlenecks)] as ResNet_L1
+    component [Layer2\n(4 Bottlenecks)] as ResNet_L2
+    component [Layer3\n(6 Bottlenecks)] as ResNet_L3
+    component [Layer4\n(3 Bottlenecks)] as ResNet_L4
+    component [Global Avg Pool] as ResNet_GAP
+    component [Flatten\n2048 features] as ResNet_Features
+}
+
+package "EfficientNet-B0 Backbone" <<EfficientNet>> {
+    component [Stem Conv] as EffNet_Stem
+    component [MBConv Block 1] as EffNet_MB1
+    component [MBConv Block 2] as EffNet_MB2
+    component [MBConv Block 3] as EffNet_MB3
+    component [MBConv Block 4] as EffNet_MB4
+    component [MBConv Block 5] as EffNet_MB5
+    component [MBConv Block 6] as EffNet_MB6
+    component [MBConv Block 7] as EffNet_MB7
+    component [Global Avg Pool] as EffNet_GAP
+    component [Flatten\n1280 features] as EffNet_Features
+}
+
+package "Fusion Layer" <<Fusion>> {
+    component [Concatenate\n2048 + 1280 = 3328] as Concat
+    component [Linear Layer\n3328 → 512] as Fusion_Linear
+    component [LayerNorm(512)] as Fusion_LN
+    component [ReLU] as Fusion_ReLU
+    component [Dropout(0.3)] as Fusion_Dropout
+}
+
+package "Classifier" <<Classifier>> {
+    component [Linear Layer\n512 → 12] as Classifier
+    component [Output Logits\n12 classes] as Output
+}
+
+' Input connections
+Input --> ResNet_Conv1
+Input --> EffNet_Stem
+
+' ResNet50 flow
+ResNet_Conv1 --> ResNet_Pool
+ResNet_Pool --> ResNet_L1
+ResNet_L1 --> ResNet_L2
+ResNet_L2 --> ResNet_L3
+ResNet_L3 --> ResNet_L4
+ResNet_L4 --> ResNet_GAP
+ResNet_GAP --> ResNet_Features
+
+' EfficientNet-B0 flow
+EffNet_Stem --> EffNet_MB1
+EffNet_MB1 --> EffNet_MB2
+EffNet_MB2 --> EffNet_MB3
+EffNet_MB3 --> EffNet_MB4
+EffNet_MB4 --> EffNet_MB5
+EffNet_MB5 --> EffNet_MB6
+EffNet_MB6 --> EffNet_MB7
+EffNet_MB7 --> EffNet_GAP
+EffNet_GAP --> EffNet_Features
+
+' Fusion flow
+ResNet_Features --> Concat
+EffNet_Features --> Concat
+Concat --> Fusion_Linear
+Fusion_Linear --> Fusion_LN
+Fusion_LN --> Fusion_ReLU
+Fusion_ReLU --> Fusion_Dropout
+
+' Classification flow
+Fusion_Dropout --> Classifier
+Classifier --> Output
+
+note right of ResNet_Features
+  **ResNet50 Features:**
+  - 2048-dimensional feature vector
+  - Pre-trained on ImageNet
+  - Captures hierarchical patterns
+end note
+
+note right of EffNet_Features
+  **EfficientNet-B0 Features:**
+  - 1280-dimensional feature vector
+  - Pre-trained on ImageNet
+  - Efficient depth/width scaling
+end note
+
+note right of Fusion_Dropout
+  **Fusion Strategy:**
+  - Concatenates both feature vectors
+  - Projects to 512-dim latent space
+  - LayerNorm for stability
+  - Dropout for regularization
+end note
+
+note right of Output
+  **Output:**
+  - 12 disease classes
+  - Softmax for probabilities
+  - CrossEntropyLoss for training
+end note
+
+legend right
+  |<#E8F4F8> ResNet50 Backbone |
+  |<#FFF4E6> EfficientNet-B0 Backbone |
+  |<#E8F5E9> Fusion Layer |
+  |<#FCE4EC> Classifier |
+  |
+  **Model Statistics:**
+  - Total Parameters: ~38.9M
+  - Input Size: 224×224×3
+  - Fusion Dimension: 512
+  - Output Classes: 12
+endlegend
+
+@enduml
+
+

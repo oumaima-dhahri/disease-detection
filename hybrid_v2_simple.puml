@@ -1,0 +1,67 @@
+@startuml Hybrid V2 Model - Simplified View
+
+title Hybrid V2 Model Architecture\nSimplified Component Diagram
+
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+rectangle "Input" as Input #LightBlue {
+  [Image\n224×224×3]
+}
+
+rectangle "ResNet50 Backbone" as ResNet #LightGreen {
+  [Feature Extractor]
+  [Global Avg Pool]
+  [2048 features]
+}
+
+rectangle "EfficientNet-B0 Backbone" as EfficientNet #LightYellow {
+  [Feature Extractor]
+  [Global Avg Pool]
+  [1280 features]
+}
+
+rectangle "Fusion Module" as Fusion #LightCoral {
+  [Concatenate\n3328 dims]
+  [Linear: 3328→512]
+  [LayerNorm]
+  [ReLU + Dropout(0.3)]
+}
+
+rectangle "Classifier" as Classifier #LightPink {
+  [Linear: 512→12]
+  [12 Disease Classes]
+}
+
+Input --> ResNet : Parallel Processing
+Input --> EfficientNet : Parallel Processing
+
+ResNet --> Fusion : 2048 features
+EfficientNet --> Fusion : 1280 features
+
+Fusion --> Classifier : 512 features
+
+note right of ResNet
+  **ResNet50:**
+  - Pre-trained on ImageNet
+  - 4 residual layers
+  - 2048 output features
+end note
+
+note right of EfficientNet
+  **EfficientNet-B0:**
+  - Pre-trained on ImageNet
+  - 7 MBConv blocks
+  - 1280 output features
+end note
+
+note right of Fusion
+  **Fusion Strategy:**
+  1. Concatenate features
+  2. Project to 512-dim
+  3. Normalize & Regularize
+end note
+
+@enduml
+
+
