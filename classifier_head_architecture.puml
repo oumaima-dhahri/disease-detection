@@ -1,0 +1,49 @@
+@startuml Classifier_Head_Architecture
+
+title Classifier Head Architecture
+
+left to right direction
+
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam rectangle {
+    RoundCorner 20
+    BackgroundColor #FFFFFF
+    BorderColor #2C3E50
+    FontColor #1F2933
+}
+skinparam ArrowColor #2C3E50
+skinparam ArrowThickness 2
+
+rectangle "AdaptiveAvgPool\n1024 features" as Pool #E3F2FD
+rectangle "LayerNorm" as Norm #F3E5F5
+rectangle "Dropout" as Drop1 #FFF3E0
+rectangle "Linear\n1024 → 768" as Linear1 #E8F5E9
+rectangle "GELU" as GELU1 #FCE4EC
+rectangle "Dropout" as Drop2 #FFF3E0
+rectangle "Linear\n768 → 384" as Linear2 #E8F5E9
+rectangle "GELU" as GELU2 #FCE4EC
+rectangle "Dropout" as Drop3 #FFF3E0
+rectangle "Linear\n384 → 12" as Linear3 #E8F5E9
+rectangle "Output\n12 classes" as Output #FCE4EC
+
+Pool -right-> Norm
+Norm -right-> Drop1
+Drop1 -right-> Linear1
+Linear1 -right-> GELU1
+GELU1 -right-> Drop2
+Drop2 -right-> Linear2
+Linear2 -right-> GELU2
+GELU2 -right-> Drop3
+Drop3 -right-> Linear3
+Linear3 -right-> Output
+
+legend right
+  |<#E3F2FD> Pooling |
+  |<#F3E5F5> Normalization |
+  |<#FFF3E0> Dropout |
+  |<#E8F5E9> Linear Layer |
+  |<#FCE4EC> Activation/Output |
+endlegend
+
+@enduml
