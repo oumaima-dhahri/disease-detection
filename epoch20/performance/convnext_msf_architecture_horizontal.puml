@@ -1,0 +1,61 @@
+@startuml ConvNeXt_MSF_Architecture_Horizontal
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor #FFFFFF
+skinparam direction topToBottom
+
+title ConvNeXt with Multi-Scale Fusion Architecture (Compact Layout)
+
+' Define colors
+skinparam rectangle {
+    Input #FFB6C1
+    Stem #87CEEB
+    ConvBlock #20B2AA
+    Downsample #D2B48C
+    MSFBranch1 #90EE90
+    MSFBranch2 #87CEFA
+    MSFBranch3 #FFA500
+    Fusion #DDA0DD
+    Pooling #DEB887
+    LayerNorm #E6E6FA
+    Dropout #20B2AA
+    Flatten #9370DB
+    Linear #FF6347
+    GELU #98FB98
+    Output #8B0000
+}
+
+' Main flow left to right
+rectangle "Input\n320×320×3" as Input #FFB6C1
+
+rectangle "Backbone\nStem→S1→S2→S3→S4\n1024 ch" as Backbone #20B2AA
+
+rectangle "MSF Module" as MSFBox #DDA0DD {
+    rectangle "3×3" as B1 #90EE90
+    rectangle "5×5" as B2 #87CEFA
+    rectangle "7×7" as B3 #FFA500
+}
+
+rectangle "Classifier\nPool→LN→Linear→GELU\n→Linear→GELU→Linear\n12 classes" as Classifier #FF6347
+
+rectangle "Output\n12 Classes" as Output #8B0000
+
+Input -right-> Backbone
+Backbone -right-> MSFBox
+MSFBox -right-> Classifier
+Classifier -right-> Output
+
+legend bottom
+    | Color | Component |
+    | <#FFB6C1> | Input |
+    | <#20B2AA> | ConvNeXt Backbone |
+    | <#90EE90> | MSF Branch 1 (3×3) |
+    | <#87CEFA> | MSF Branch 2 (5×5) |
+    | <#FFA500> | MSF Branch 3 (7×7) |
+    | <#DDA0DD> | MSF Fusion |
+    | <#FF6347> | Classifier Head |
+    | <#8B0000> | Output |
+endlegend
+
+@enduml
+

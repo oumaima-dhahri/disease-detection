@@ -1,0 +1,119 @@
+@startuml ConvNeXt_MSF_Architecture_WordFriendly
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor #FFFFFF
+skinparam linetype ortho
+skinparam defaultFontSize 16
+skinparam defaultFontName Arial
+skinparam rectangle {
+    FontSize 14
+    FontName Arial
+    FontStyle bold
+    Padding 12
+    MinimumWidth 100
+    MinimumHeight 60
+}
+skinparam arrow {
+    FontSize 12
+    FontName Arial
+    FontStyle bold
+}
+
+title ConvNeXt with Multi-Scale Fusion Architecture
+
+' Define colors
+skinparam rectangle {
+    Input #FFB6C1
+    Stem #87CEEB
+    ConvBlock #20B2AA
+    Downsample #D2B48C
+    MSFBranch1 #90EE90
+    MSFBranch2 #87CEFA
+    MSFBranch3 #FFA500
+    Fusion #DDA0DD
+    Pooling #DEB887
+    LayerNorm #E6E6FA
+    Dropout #20B2AA
+    Flatten #9370DB
+    Linear #FF6347
+    GELU #98FB98
+    Output #8B0000
+}
+
+rectangle "Input Image\n320 x 320 x 3" as Input #FFB6C1
+
+package "ConvNeXt Backbone" #FFFFFF {
+    rectangle "Stem\n4x4 Conv\nStride 4" as Stem #87CEEB
+    rectangle "Stage 1\n3 Blocks\n128 Ch" as Stage1 #20B2AA
+    rectangle "Downsample\n2x2 Conv" as DS1 #D2B48C
+    rectangle "Stage 2\n3 Blocks\n256 Ch" as Stage2 #20B2AA
+    rectangle "Downsample\n2x2 Conv" as DS2 #D2B48C
+    rectangle "Stage 3\n9 Blocks\n512 Ch" as Stage3 #20B2AA
+    rectangle "Downsample\n2x2 Conv" as DS3 #D2B48C
+    rectangle "Stage 4\n3 Blocks\n1024 Ch" as Stage4 #20B2AA
+}
+
+rectangle "Feature Map\n1024 x 10 x 10" as FeatureMap #E6E6FA
+
+' Multi-Scale Fusion Module and Classifier - All Horizontal
+left to right direction
+rectangle "Branch 1\n3x3 DW\n1x1 PW\nBN+GELU" as Branch1 #90EE90
+rectangle "Branch 2\n5x5 DW\n1x1 PW\nBN+GELU" as Branch2 #87CEFA
+rectangle "Branch 3\n7x7 DW\n1x1 PW\nBN+GELU" as Branch3 #FFA500
+rectangle "Concat\n3x1024" as Concat #DDA0DD
+rectangle "Fusion\n1x1+BN" as Fusion #DDA0DD
+rectangle "Fused\n1024" as Fused #E6E6FA
+rectangle "AvgPool" as AvgPool #DEB887
+rectangle "Flatten" as Flatten #9370DB
+rectangle "LayerNorm\n1024" as LN1 #E6E6FA
+rectangle "Dropout\n0.2" as Drop1 #20B2AA
+rectangle "Linear\n1024→768" as Linear1 #FF6347
+rectangle "GELU" as GELU1 #98FB98
+rectangle "Dropout\n0.3" as Drop2 #20B2AA
+rectangle "Linear\n768→384" as Linear2 #FF6347
+rectangle "GELU" as GELU2 #98FB98
+rectangle "Dropout\n0.2" as Drop3 #20B2AA
+rectangle "Linear\n384→12" as Linear3 #FF6347
+top to bottom direction
+
+rectangle "Output\n12 Classes" as Output #8B0000
+
+' Flow connections - Backbone (vertical)
+Input --> Stem
+Stem --> Stage1
+Stage1 --> DS1
+DS1 --> Stage2
+Stage2 --> DS2
+DS2 --> Stage3
+Stage3 --> DS3
+DS3 --> Stage4
+Stage4 --> FeatureMap
+
+' MSF Module and Classifier - All Horizontal flow
+FeatureMap -down-> Branch1
+FeatureMap -down-> Branch2
+FeatureMap -down-> Branch3
+
+Branch1 -right-> Concat
+Branch2 -right-> Concat
+Branch3 -right-> Concat
+
+Concat -right-> Fusion
+Fusion -right-> Fused
+FeatureMap -right-> Fused : residual
+
+Fused -right-> AvgPool
+AvgPool -right-> Flatten
+Flatten -right-> LN1
+LN1 -right-> Drop1
+Drop1 -right-> Linear1
+Linear1 -right-> GELU1
+GELU1 -right-> Drop2
+Drop2 -right-> Linear2
+Linear2 -right-> GELU2
+GELU2 -right-> Drop3
+Drop3 -right-> Linear3
+Linear3 -down-> Output
+
+@enduml
+
