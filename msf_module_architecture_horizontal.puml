@@ -1,0 +1,63 @@
+@startuml MSF_Module_Architecture_Horizontal
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor #FFFFFF
+skinparam linetype ortho
+skinparam defaultFontSize 11
+skinparam defaultFontName Arial
+
+title MSF Module Architecture - Horizontal Layout
+
+' Define colors
+skinparam rectangle {
+    Input #E8F4F8
+    Branch1 #90EE90
+    Branch2 #87CEEB
+    Branch3 #FFA500
+    Concat #DDA0DD
+    LayerNorm #E6E6FA
+    Conv1x1 #FFB6C1
+    Residual #FFD700
+    Output #98FB98
+}
+
+' Input
+rectangle "Input\nF₄\nℝ^(1024×10×10)" as Input #E8F4F8
+
+' Three parallel branches (horizontal)
+rectangle "Branch 1\n3×3 DWConv\nB₃\nℝ^(1024×10×10)" as Branch1 #90EE90
+rectangle "Branch 2\n5×5 DWConv\nB₅\nℝ^(1024×10×10)" as Branch2 #87CEEB
+rectangle "Branch 3\n7×7 DWConv\nB₇\nℝ^(1024×10×10)" as Branch3 #FFA500
+
+' Concatenation
+rectangle "Concat\n[B₃,B₅,B₇]\nℝ^(3072×10×10)" as Concat #DDA0DD
+
+' Layer Normalization
+rectangle "LayerNorm\nF'\nℝ^(3072×10×10)" as LayerNorm #E6E6FA
+
+' 1×1 Convolution
+rectangle "1×1 Conv\nF_fused\nℝ^(1024×10×10)" as Conv1x1 #FFB6C1
+
+' Residual connection
+rectangle "Residual\nF₄ + F_fused\nF_MSF\nℝ^(1024×10×10)" as Residual #FFD700
+
+' Output
+rectangle "Output\nF_MSF\nℝ^(1024×10×10)" as Output #98FB98
+
+' Layout: horizontal flow
+Input -right-> Branch1
+Input -right-> Branch2
+Input -right-> Branch3
+
+Branch1 -down-> Concat
+Branch2 -down-> Concat
+Branch3 -down-> Concat
+
+Concat -right-> LayerNorm
+LayerNorm -right-> Conv1x1
+Conv1x1 -right-> Residual
+Input -down-> Residual : residual
+Residual -right-> Output
+
+@enduml
+

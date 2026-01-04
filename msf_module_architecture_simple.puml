@@ -1,0 +1,62 @@
+@startuml MSF_Module_Architecture_Simple
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor #F5F5F5
+skinparam linetype ortho
+skinparam defaultFontSize 13
+skinparam defaultFontName Arial Bold
+
+title Multi-Scale Feature Fusion (MSF) Module Architecture
+
+' Color scheme
+skinparam rectangle {
+    Input #4A90E2
+    Branch #50C878
+    Process #FF6B6B
+    Output #FFA500
+}
+
+' Input
+rectangle "**Input Feature Map**\nF₄ ∈ ℝ^(1024×10×10)\nfrom ConvNeXt Stage 4" as Input #4A90E2
+
+' Parallel branches
+package "Multi-Scale Branches" #E8F8F5 {
+    rectangle "**Branch 1**\n3×3 Depthwise Conv\nB₃ ∈ ℝ^(1024×10×10)\nFine details" as B1 #50C878
+    rectangle "**Branch 2**\n5×5 Depthwise Conv\nB₅ ∈ ℝ^(1024×10×10)\nMedium patterns" as B2 #50C878
+    rectangle "**Branch 3**\n7×7 Depthwise Conv\nB₇ ∈ ℝ^(1024×10×10)\nLarge lesions" as B3 #50C878
+}
+
+' Fusion process
+package "Feature Fusion" #FFF5E6 {
+    rectangle "**Concatenation**\n[B₃, B₅, B₇]\nF_concat ∈ ℝ^(3072×10×10)" as Concat #FF6B6B
+    rectangle "**Layer Normalization**\nF' ∈ ℝ^(3072×10×10)" as Norm #FF6B6B
+    rectangle "**1×1 Convolution**\nF_fused ∈ ℝ^(1024×10×10)" as Conv #FF6B6B
+}
+
+' Output
+rectangle "**Residual Connection**\nF₄ + F_fused\n**Output** F_MSF ∈ ℝ^(1024×10×10)" as Output #FFA500
+
+' Connections
+Input --> B1
+Input --> B2
+Input --> B3
+
+B1 --> Concat
+B2 --> Concat
+B3 --> Concat
+
+Concat --> Norm
+Norm --> Conv
+Conv --> Output
+Input ..> Output : residual
+
+legend right
+  | Color | Meaning |
+  | <#4A90E2> | Input Features |
+  | <#50C878> | Multi-Scale Branches |
+  | <#FF6B6B> | Fusion Operations |
+  | <#FFA500> | Output Features |
+endlegend
+
+@enduml
+

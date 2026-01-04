@@ -1,0 +1,96 @@
+@startuml MSF_Module_Architecture
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor #FFFFFF
+skinparam linetype ortho
+skinparam defaultFontSize 12
+skinparam defaultFontName Arial
+
+title MSF Module Architecture with Dimensions
+
+' Define colors
+skinparam rectangle {
+    Input #E8F4F8
+    Branch1 #90EE90
+    Branch2 #87CEEB
+    Branch3 #FFA500
+    Concat #DDA0DD
+    LayerNorm #E6E6FA
+    Conv1x1 #FFB6C1
+    Residual #FFD700
+    Output #98FB98
+}
+
+' Input from ConvNeXt Stage 4
+rectangle "Input Feature Map\nF₄ ∈ ℝ^(1024×10×10)\nfrom ConvNeXt Stage 4" as Input #E8F4F8
+
+' Three parallel branches
+rectangle "Branch 1\n3×3 Depthwise Conv\nB₃ ∈ ℝ^(1024×10×10)\nFine-grained features" as Branch1 #90EE90
+rectangle "Branch 2\n5×5 Depthwise Conv\nB₅ ∈ ℝ^(1024×10×10)\nMedium-scale patterns" as Branch2 #87CEEB
+rectangle "Branch 3\n7×7 Depthwise Conv\nB₇ ∈ ℝ^(1024×10×10)\nLarge-scale lesions" as Branch3 #FFA500
+
+' Concatenation
+rectangle "Concatenation\n[B₃, B₅, B₇]\nF_concat ∈ ℝ^(3072×10×10)" as Concat #DDA0DD
+
+' Layer Normalization
+rectangle "Layer Normalization\nF' ∈ ℝ^(3072×10×10)" as LayerNorm #E6E6FA
+
+' 1×1 Convolution
+rectangle "1×1 Pointwise Conv\nF_fused ∈ ℝ^(1024×10×10)\nChannel fusion" as Conv1x1 #FFB6C1
+
+' Residual connection
+rectangle "Residual Connection\nF₄ + F_fused\nF_MSF ∈ ℝ^(1024×10×10)" as Residual #FFD700
+
+' Output
+rectangle "Output Feature Map\nF_MSF ∈ ℝ^(1024×10×10)\nTo Classification Head" as Output #98FB98
+
+' Connections
+Input --> Branch1
+Input --> Branch2
+Input --> Branch3
+
+Branch1 --> Concat
+Branch2 --> Concat
+Branch3 --> Concat
+
+Concat --> LayerNorm
+LayerNorm --> Conv1x1
+Conv1x1 --> Residual
+Input ..> Residual : residual connection
+Residual --> Output
+
+note right of Branch1
+  **Fine Details**
+  Captures small lesions
+  and early symptoms
+end note
+
+note right of Branch2
+  **Medium Patterns**
+  Detects mid-sized
+  rust patterns
+end note
+
+note right of Branch3
+  **Large Lesions**
+  Identifies extensive
+  blights and rust
+end note
+
+note bottom of Concat
+  **Multi-Scale Fusion**
+  Combines features from
+  all three branches
+  along channel dimension
+end note
+
+note bottom of Residual
+  **Gradient Flow**
+  Preserves original
+  ConvNeXt features
+  while adding MSF
+  enhancements
+end note
+
+@enduml
+
